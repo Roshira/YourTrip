@@ -282,3 +282,10 @@ wwwroot/lib/
 appsettings.*.json
 appsettings.json
 appsettings.Development.json
+
+# NUnit additional
+*.VisualState.xml
+*.nunit.xml
+*.TestResult.xml
+TestResult.xml
+TestResults/
