@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Core.Entities
+namespace YourTrips.Infrastructure.Data.Configurations
 {
-    internal class Trip
+    public class SavedHotelConfig 
     {
     }
 }
