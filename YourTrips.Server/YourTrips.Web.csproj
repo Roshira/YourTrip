@@ -31,4 +31,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YourTrips.Application\YourTrips.Application.csproj" />
+    <ProjectReference Include="..\YourTrips.Infrastructure\YourTrips.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -16,7 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Application", "Yo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Infrastructure", "YourTrips.Infrastructure\YourTrips.Infrastructure.csproj", "{6D28BB7D-AA90-4E76-A6CD-71A1AB893C95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Server", "YourTrips.Server\YourTrips.Server.csproj", "{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Web", "YourTrips.Server\YourTrips.Web.csproj", "{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36522424-E384-45E5-8178-A1A5C9E84866} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA7375A5-B7A0-4D06-8B6A-0527A0B31B20}
