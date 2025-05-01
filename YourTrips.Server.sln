@@ -16,9 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Application", "Yo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Infrastructure", "YourTrips.Infrastructure\YourTrips.Infrastructure.csproj", "{6D28BB7D-AA90-4E76-A6CD-71A1AB893C95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Web", "YourTrips.Server\YourTrips.Web.csproj", "{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourTrips.Web", "YourTrips.Web\YourTrips.Web.csproj", "{6F801B94-86C0-987E-58B4-3FC18F7F881E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,10 +42,10 @@ Global
 		{6D28BB7D-AA90-4E76-A6CD-71A1AB893C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D28BB7D-AA90-4E76-A6CD-71A1AB893C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D28BB7D-AA90-4E76-A6CD-71A1AB893C95}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E2BAB45-DEEB-7996-6601-44E8FCDD96E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F801B94-86C0-987E-58B4-3FC18F7F881E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F801B94-86C0-987E-58B4-3FC18F7F881E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F801B94-86C0-987E-58B4-3FC18F7F881E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F801B94-86C0-987E-58B4-3FC18F7F881E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

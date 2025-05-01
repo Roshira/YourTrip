@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Entities.Achievement;
 using YourTrips.Core.Entities.Saved;
+using YourTrips.Infrastructure.Data.Configurations.SavedItemsConfigs;
 
 
 namespace YourTrips.Infrastructure.Data
@@ -40,28 +41,11 @@ namespace YourTrips.Infrastructure.Data
             base.OnModelCreating(builder); // !!!! for Identity
            
             builder.ApplyConfigurationsFromAssembly(typeof(YourTripsDbContext).Assembly);
- 
-            ConfigureSavedEntities(builder);
+
+            var savedConfig = new SavedConfig();
+            savedConfig.ConfigureSavedEntities(builder);
         }
 
-        private void ConfigureSavedEntities(ModelBuilder builder)
-        {
-            // Загальна конфігурація для всіх Saved-сутностей
-            void ConfigureSavedEntity<T>(string externalIdName) where T : class
-            {
-                builder.Entity<T>(b =>
-                {
-                    b.Property("Id").ValueGeneratedOnAdd();
-                    b.Property(externalIdName).IsRequired();
-                    b.Property("SavedAt").HasDefaultValueSql("GETUTCDATE()");
-                });
-            }
-
-            ConfigureSavedEntity<SavedHotel>("ExternalHotelId");
-            ConfigureSavedEntity<SavedFlights>("ExternalFlightsId");
-            ConfigureSavedEntity<SavedPlaces>("ExternalPlacesId");
-            ConfigureSavedEntity<SavedTrainTrips>("ExternalTrainId");
-            ConfigureSavedEntity<SavedBlaBlaCarTrips>("ExternalBlaBlaCarId");
-        }
+       
     }
 }

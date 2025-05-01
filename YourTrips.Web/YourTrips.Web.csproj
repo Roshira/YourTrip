@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <RootNamespace>YourTrips.Web</RootNamespace>
+    <AssemblyName>YourTrips.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
