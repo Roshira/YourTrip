@@ -15,7 +15,7 @@ namespace YourTrips.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<TripHistory> builder)
         {
             builder.HasKey(th => th.Id);
-            builder.Property(th => th.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+            builder.Property(th => th.CreatedAt).HasDefaultValueSql("NOW() AT TIME ZONE 'UTC'");
         }
     }
 }

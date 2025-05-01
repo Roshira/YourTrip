@@ -19,7 +19,7 @@ namespace YourTrips.Infrastructure.Data.Configurations.SavedItemsConfigs
                 {
                     b.Property("Id").ValueGeneratedOnAdd();
                     b.Property(externalIdName).IsRequired();
-                    b.Property("SavedAt").HasDefaultValueSql("GETUTCDATE()");
+                    b.Property("SavedAt").HasDefaultValueSql("NOW() AT TIME ZONE 'UTC'");
                 });
             }
 
