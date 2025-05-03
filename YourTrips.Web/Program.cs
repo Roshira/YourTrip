@@ -1,8 +1,17 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using YourTrips.Application;
+using YourTrips.Core.Entities;
+using YourTrips.Core.Interfaces.Services;
 using YourTrips.Infrastructure;
+using YourTrips.Infrastructure.Data;
+using YourTrips.Infrastructure.Services;
 using YourTrips.Web;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
