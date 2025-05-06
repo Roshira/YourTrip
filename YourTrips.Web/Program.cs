@@ -16,7 +16,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddWeb()
+    .AddWeb(builder.Configuration)
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 

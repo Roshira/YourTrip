@@ -13,11 +13,11 @@ namespace YourTrips.Core.Entities
 {
     public class User : IdentityUser<Guid>
     {
-        public string IconUrl { get; set; }
+        public string? IconUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [StringLength(500)]
-        public string SavedYourMemoirs { get; set; }
+        public string? SavedYourMemoirs { get; set; }
 
         public ICollection<SavedHotel> SavedHotels { get; set; }
         public ICollection<SavedFlights> SavedFlights { get; set; }
