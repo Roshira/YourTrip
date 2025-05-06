@@ -20,7 +20,7 @@ namespace YourTrips.Infrastructure.Services
         public AuthService(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            JwtTokenGenerator jwtTokenGenerator
+            IJwtTokenGenerator jwtTokenGenerator
             )
         {
             _userManager = userManager;
@@ -45,6 +45,7 @@ namespace YourTrips.Infrastructure.Services
                 Email = registerDto.Email,
                 UserName = registerDto.UserName,
                 CreatedAt = DateTime.UtcNow,
+                IconUrl = "https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png"
             };
             var result = await _userManager.CreateAsync( newUser, registerDto.Password);
             if (!result.Succeeded)

@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YourTrips.Core.Entities;
+using YourTrips.Core.Interfaces.Services;
 using YourTrips.Infrastructure.Data;
+using YourTrips.Infrastructure.Services;
 
 namespace YourTrips.Infrastructure
 {
@@ -16,12 +18,16 @@ namespace YourTrips.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,IConfiguration config)
         {
+            
             services.AddDbContext<YourTripsDbContext>(options =>
                 options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<YourTripsDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddScoped<IAuthService, AuthService>();
+
 
 
             return services;
