@@ -1,32 +1,38 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Application.Interfaces;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Services;
 
-namespace YourTrips.Infrastructure.Services
+namespace YourTrips.Infrastructure.Services.AuthServices
 {
     public class AuthService : IAuthService
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        private readonly IAppEmailSender _emailSender;
 
         public AuthService(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            IJwtTokenGenerator jwtTokenGenerator
+            IJwtTokenGenerator jwtTokenGenerator,
+            IAppEmailSender emailSender
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtTokenGenerator = jwtTokenGenerator;
-
+            _emailSender = emailSender;
         }
 
         public async Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto)
@@ -57,14 +63,18 @@ namespace YourTrips.Infrastructure.Services
                 };
             }
 
-            var token = _jwtTokenGenerator.GenerateToken(newUser);
+            var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+
+             var confirmationLink = $"http://192.168.0.102:7271/api/auth/confirm-email?userId={newUser.Id}&token={Uri.EscapeDataString(emailToken)}";
+            //var confirmationLink = $"http://192.168.0.102:7271/api/auth/confirm-email?userId={newUser.Id}&token={Uri.EscapeDataString(emailToken)}";
+            var htmlMessage = $"<p>Welcome to YourTrips!</p><p>Click the link below to confirm your email:</p><a href='{confirmationLink}'>Confirm Email</a>";
+
+            await _emailSender.SendEmailAsync(newUser.Email, "Confirm your email", htmlMessage);
 
             return new AuthResponseDto
             {
                 IsSuccess = true,
-                Token = token,
-                Email = newUser.Email,
-                UserName = newUser.UserName
+                Message = "Registration successful. Please check your email to confirm your account."
             };
         }
         public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
@@ -101,5 +111,8 @@ namespace YourTrips.Infrastructure.Services
             };
 
         }
+
+       
+
     }
 }

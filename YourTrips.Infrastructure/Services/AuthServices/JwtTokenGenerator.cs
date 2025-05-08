@@ -10,7 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using YourTrips.Core.Interfaces.Services;
 
-namespace YourTrips.Infrastructure.Services
+namespace YourTrips.Infrastructure.Services.AuthServices
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {

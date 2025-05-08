@@ -39,7 +39,6 @@ namespace YourTrips.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder); // !!!! for Identity
-           
             builder.ApplyConfigurationsFromAssembly(typeof(YourTripsDbContext).Assembly);
 
             var savedConfig = new SavedConfig();

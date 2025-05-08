@@ -20,6 +20,7 @@ namespace YourTrips.Infrastructure.Data.Configurations
             builder.HasMany(u => u.SavedTrainTrips).WithOne(st => st.User).HasForeignKey(st => st.UserId);
             builder.HasMany(u => u.TripHistories).WithOne(th => th.User).HasForeignKey(th => th.UserId);
             builder.HasMany(u => u.UserAchievements).WithOne(ua => ua.User).HasForeignKey(ua => ua.UserId);
+            builder.HasIndex(u => u.UserName).IsUnique(false);
         }
     }
 }
