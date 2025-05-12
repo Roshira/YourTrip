@@ -7,45 +7,44 @@ namespace YourTrips.Web
 {
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds web-related services to the DI container
+        /// </summary>
+        /// <param name="services">Service collection</param>
+        /// <param name="configuration">Application configuration</param>
+        /// <returns>Configured service collection</returns>
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration configuration)
         {
-            // Add services to the container.
-
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-
+            // Add MVC controllers support
             services.AddControllers();
-            services.AddOpenApi();
+
+            // Add API explorer services (required for Swagger)
             services.AddEndpointsApiExplorer();
+
+            // Configure Swagger documentation
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "YourTrips API", Version = "v1" });
+            });
 
-                // JWT Configuration
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http, 
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT"
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            // --- CORS Configuration ---
+            services.AddCors(options =>
             {
+                options.AddPolicy("AllowAll", policy =>
                 {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
-                }
+                    // WARNING: AllowAnyOrigin() is NOT recommended for production, especially with cookies!
+                    // Better specify exact frontend domains: .WithOrigins("http://localhost:3000", "https://yourfrontend.com")
+                    // Also requires .AllowCredentials() for cookies to work with cross-domain requests
+                    // If using .AllowCredentials(), you CANNOT use .AllowAnyOrigin()
+                    policy
+                        // .WithOrigins("http://localhost:xxxx") // Replace xxxx with your frontend port
+                        .AllowAnyOrigin() // Temporary for development, or if API is completely public
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    // .AllowCredentials(); // Needed if frontend is on different domain and you're NOT using AllowAnyOrigin
+                });
             });
-            });
+
             return services;
         }
     }

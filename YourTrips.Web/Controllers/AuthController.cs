@@ -1,47 +1,53 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Services;
-using YourTrips.Infrastructure.Services;
 
 namespace YourTrips.Web.Controllers
 {
-
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] // Base route for all actions in this controller
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
         private readonly UserManager<User> _userManager;
-        private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        public AuthController(IAuthService authService,
+        private readonly SignInManager<User> _signInManager; // Added for logout functionality
+
+        public AuthController(
+            IAuthService authService,
             UserManager<User> userManager,
-            IJwtTokenGenerator jwtTokenGenerator
-            )
-
-
+            SignInManager<User> signInManager)
         {
-            _userManager = userManager;
             _authService = authService;
-            _jwtTokenGenerator = jwtTokenGenerator;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Registers a new user
+        /// </summary>
+        /// <param name="registerDto">User registration data</param>
+        /// <returns>Registration result</returns>
         [HttpPost("register")]
-        [AllowAnonymous]
+        [AllowAnonymous] // Allows access without authentication
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
             var result = await _authService.RegisterAsync(registerDto);
-
             if (!result.IsSuccess)
             {
-                return BadRequest(result);
+                return BadRequest(result); // Returns 400 with error details
             }
-
-            return Ok(result);
+            return Ok(result); // Returns 200 with success message
         }
 
+        /// <summary>
+        /// Authenticates a user
+        /// </summary>
+        /// <param name="loginDto">User credentials</param>
+        /// <returns>Authentication result with user data</returns>
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
@@ -50,30 +56,83 @@ namespace YourTrips.Web.Controllers
 
             if (!result.IsSuccess)
             {
-                return Unauthorized(result);
+                // Returns 401 for failed login attempts (except for lockout/2FA cases)
+                return Unauthorized(new { result.Message });
             }
-            return Ok(result);
+
+            // Cookie is set automatically via SignInManager
+            return Ok(result); // Returns user data (Email, UserName)
         }
-      
+
+        /// <summary>
+        /// Logs out the current user
+        /// </summary>
+        [HttpPost("logout")]
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            // Removes authentication cookie
+            await _signInManager.SignOutAsync();
+            return Ok(new { Message = "Logout successful" });
+        }
+
+        /// <summary>
+        /// Confirms user's email address
+        /// </summary>
+        /// <param name="userId">User ID</param>
+        /// <param name="token">Confirmation token</param>
         [HttpGet("confirm-email")]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return BadRequest("User ID and token are required.");
+            }
+
+            if (!Guid.TryParse(userId, out _))
+            {
+                return BadRequest("Invalid User ID format.");
+            }
+
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
-                return BadRequest("Invalid user ID");
+            {
+                // Don't reveal whether user exists
+                return BadRequest("Unable to confirm email.");
+            }
+
+            token = Uri.UnescapeDataString(token); // URL decode the token
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
             if (!result.Succeeded)
-                return BadRequest("Email confirmation failed");
+            {
+                return BadRequest("Email confirmation failed. The link might be invalid or expired.");
+            }
 
-            // Генеруємо JWT тільки після підтвердження
-            var jwtToken = _jwtTokenGenerator.GenerateToken(user);
+            return Ok(new { Message = "Email confirmed successfully. You can now log in." });
+        }
+
+        /// <summary>
+        /// Gets current authenticated user's information
+        /// </summary>
+        [HttpGet("current")]
+        [Authorize] // IMPORTANT: Requires valid authentication cookie
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            // If request reaches here, user is authenticated
+            var user = await _userManager.GetUserAsync(User); // Get full User object from DB
+
+            if (user == null)
+            {
+                // Shouldn't happen if cookie is valid
+                return Unauthorized(new { Message = "User not found for the current session." });
+            }
 
             return Ok(new
             {
-                message = "Email confirmed successfully",
-                token = jwtToken
+                user.Email,
+                user.UserName,
             });
         }
     }
