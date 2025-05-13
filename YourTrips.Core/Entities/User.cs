@@ -13,7 +13,6 @@ namespace YourTrips.Core.Entities
 {
     public class User : IdentityUser<Guid>
     {
-        public string? IconUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [StringLength(500)]

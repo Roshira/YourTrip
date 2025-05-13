@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // --- URL Configuration ---
 // Listen on all network interfaces on port 7271 (HTTP)
 // In production, you would typically use a reverse proxy (nginx, IIS) that handles HTTPS
-builder.WebHost.UseUrls("http://0.0.0.0:7271");
+builder.WebHost.UseUrls("https://0.0.0.0:7271");
 
 // --- Service Registration ---
 // Chain registration of services from different layers
@@ -28,7 +28,7 @@ var app = builder.Build();
 
 // --- HTTP Request Processing Pipeline (Middleware Pipeline) ---
 // The order of middleware registration is CRUCIAL!
-
+app.MapIdentityApi<User>();
 // Development-specific middleware
 if (app.Environment.IsDevelopment())
 {

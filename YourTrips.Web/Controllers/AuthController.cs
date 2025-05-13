@@ -19,7 +19,9 @@ namespace YourTrips.Web.Controllers
         public AuthController(
             IAuthService authService,
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager
+
+            )
         {
             _authService = authService;
             _userManager = userManager;
@@ -43,38 +45,6 @@ namespace YourTrips.Web.Controllers
             return Ok(result); // Returns 200 with success message
         }
 
-        /// <summary>
-        /// Authenticates a user
-        /// </summary>
-        /// <param name="loginDto">User credentials</param>
-        /// <returns>Authentication result with user data</returns>
-        [HttpPost("login")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
-        {
-            var result = await _authService.LoginAsync(loginDto);
-
-            if (!result.IsSuccess)
-            {
-                // Returns 401 for failed login attempts (except for lockout/2FA cases)
-                return Unauthorized(new { result.Message });
-            }
-
-            // Cookie is set automatically via SignInManager
-            return Ok(result); // Returns user data (Email, UserName)
-        }
-
-        /// <summary>
-        /// Logs out the current user
-        /// </summary>
-        [HttpPost("logout")]
-        [Authorize]
-        public async Task<IActionResult> Logout()
-        {
-            // Removes authentication cookie
-            await _signInManager.SignOutAsync();
-            return Ok(new { Message = "Logout successful" });
-        }
 
         /// <summary>
         /// Confirms user's email address

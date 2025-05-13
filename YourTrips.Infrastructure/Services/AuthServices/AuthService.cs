@@ -54,7 +54,6 @@ namespace YourTrips.Infrastructure.Services.AuthServices
                 Email = registerDto.Email,
                 UserName = registerDto.UserName, // Important: UserName must be unique
                 CreatedAt = DateTime.UtcNow,
-                IconUrl = "https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png"
             };
 
             // Fallback to email if username not provided
@@ -78,7 +77,7 @@ namespace YourTrips.Infrastructure.Services.AuthServices
             var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
 
             // WARNING: Don't use local IP in production!
-            var confirmationLink = $"http://192.168.0.100:7271/api/auth/confirm-email?userId={newUser.Id}&token={Uri.EscapeDataString(emailToken)}";
+            var confirmationLink = $"https://192.168.0.103:7271/api/auth/confirm-email?userId={newUser.Id}&token={Uri.EscapeDataString(emailToken)}";
 
             // Create HTML email message
             var htmlMessage = $"<p>Welcome to YourTrips!</p><p>Click the link below to confirm your email:</p><a href='{confirmationLink}'>Confirm Email</a>";
@@ -99,51 +98,51 @@ namespace YourTrips.Infrastructure.Services.AuthServices
         /// </summary>
         /// <param name="loginDto">User credentials</param>
         /// <returns>Authentication result with user data</returns>
-        public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
-        {
-            // Find user by email
-            var user = await _userManager.FindByEmailAsync(loginDto.Email);
-            if (user == null)
-            {
-                return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." }; // Generic message for security
-            }
+    //    public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
+    //    {
+    //        // Find user by email
+    //        var user = await _userManager.FindByEmailAsync(loginDto.Email);
+    //        if (user == null)
+    //        {
+    //            return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." }; // Generic message for security
+    //        }
 
-            // Check if email is confirmed
-            if (!await _userManager.IsEmailConfirmedAsync(user))
-            {
-                return new AuthResponseDto { IsSuccess = false, Message = "Email not confirmed. Please check your email." };
-            }
+    //        // Check if email is confirmed
+    //        if (!await _userManager.IsEmailConfirmedAsync(user))
+    //        {
+    //            return new AuthResponseDto { IsSuccess = false, Message = "Email not confirmed. Please check your email." };
+    //        }
 
-            // Attempt password sign-in (sets authentication cookie)
-            var result = await _signInManager.PasswordSignInAsync(
-                user.UserName,
-                loginDto.Password,
-                isPersistent: false,
-                lockoutOnFailure: true);
+    //        // Attempt password sign-in (sets authentication cookie)
+    //        var result = await _signInManager.PasswordSignInAsync(
+    //            user.UserName,
+    //            loginDto.Password,
+    //            isPersistent: false,
+    //            lockoutOnFailure: true);
 
-            if (result.Succeeded)
-            {
-                // Successful login - cookie is set automatically
-                return new AuthResponseDto
-                {
-                    IsSuccess = true,
-                    Message = "Login successful",
-                    Email = user.Email, // Return data for frontend display
-                    UserName = user.UserName
-                };
-            }
-            else if (result.IsLockedOut)
-            {
-                return new AuthResponseDto { IsSuccess = false, Message = "Account locked out. Please try again later." };
-            }
-            else if (result.RequiresTwoFactor)
-            {
-                return new AuthResponseDto { IsSuccess = false, Message = "Two-factor authentication required." };
-            }
-            else // Includes invalid password case
-            {
-                return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." };
-            }
-        }
+    //        if (result.Succeeded)
+    //        {
+    //            // Successful login - cookie is set automatically
+    //            return new AuthResponseDto
+    //            {
+    //                IsSuccess = true,
+    //                Message = "Login successful",
+    //                Email = user.Email, // Return data for frontend display
+    //                UserName = user.UserName
+    //            };
+    //        }
+    //        else if (result.IsLockedOut)
+    //        {
+    //            return new AuthResponseDto { IsSuccess = false, Message = "Account locked out. Please try again later." };
+    //        }
+    //        else if (result.RequiresTwoFactor)
+    //        {
+    //            return new AuthResponseDto { IsSuccess = false, Message = "Two-factor authentication required." };
+    //        }
+    //        else // Includes invalid password case
+    //        {
+    //            return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." };
+    //        }
+    //    }
     }
 }
