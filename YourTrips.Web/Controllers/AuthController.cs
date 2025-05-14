@@ -80,7 +80,7 @@ namespace YourTrips.Web.Controllers
                 return BadRequest("Email confirmation failed. The link might be invalid or expired.");
             }
 
-            return Ok(new { Message = "Email confirmed successfully. You can now log in." });
+            return Redirect($"https://your-app.com/email-confirm?token={token}");
         }
 
         /// <summary>

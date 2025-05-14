@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Application.Interfaces.Amadeus
+namespace YourTrips.Application.Amadeus.Interfaces
 {
-    internal class IFlightSearchService
+    public interface IAmadeusAuthService
     {
+        Task<string> GetAccessTokenAsync();
     }
 }

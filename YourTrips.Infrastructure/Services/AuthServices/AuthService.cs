@@ -93,56 +93,5 @@ namespace YourTrips.Infrastructure.Services.AuthServices
             };
         }
 
-        /// <summary>
-        /// Authenticates a user
-        /// </summary>
-        /// <param name="loginDto">User credentials</param>
-        /// <returns>Authentication result with user data</returns>
-    //    public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
-    //    {
-    //        // Find user by email
-    //        var user = await _userManager.FindByEmailAsync(loginDto.Email);
-    //        if (user == null)
-    //        {
-    //            return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." }; // Generic message for security
-    //        }
-
-    //        // Check if email is confirmed
-    //        if (!await _userManager.IsEmailConfirmedAsync(user))
-    //        {
-    //            return new AuthResponseDto { IsSuccess = false, Message = "Email not confirmed. Please check your email." };
-    //        }
-
-    //        // Attempt password sign-in (sets authentication cookie)
-    //        var result = await _signInManager.PasswordSignInAsync(
-    //            user.UserName,
-    //            loginDto.Password,
-    //            isPersistent: false,
-    //            lockoutOnFailure: true);
-
-    //        if (result.Succeeded)
-    //        {
-    //            // Successful login - cookie is set automatically
-    //            return new AuthResponseDto
-    //            {
-    //                IsSuccess = true,
-    //                Message = "Login successful",
-    //                Email = user.Email, // Return data for frontend display
-    //                UserName = user.UserName
-    //            };
-    //        }
-    //        else if (result.IsLockedOut)
-    //        {
-    //            return new AuthResponseDto { IsSuccess = false, Message = "Account locked out. Please try again later." };
-    //        }
-    //        else if (result.RequiresTwoFactor)
-    //        {
-    //            return new AuthResponseDto { IsSuccess = false, Message = "Two-factor authentication required." };
-    //        }
-    //        else // Includes invalid password case
-    //        {
-    //            return new AuthResponseDto { IsSuccess = false, Message = "Invalid credentials." };
-    //        }
-    //    }
     }
 }

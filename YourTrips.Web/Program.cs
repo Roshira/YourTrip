@@ -20,7 +20,7 @@ builder.WebHost.UseUrls("https://0.0.0.0:7271");
 // Chain registration of services from different layers
 builder.Services
     .AddWeb(builder.Configuration)      // Adds controllers, Swagger (without JWT) etc. from Web layer
-    .AddApplication()                   // Adds services from Application layer (if any)
+    .AddApplication(builder.Configuration)                   // Adds services from Application layer (if any)
     .AddInfrastructure(builder.Configuration); // Adds DbContext, Identity, Cookie Auth, EmailSender etc. from Infrastructure layer
 
 // Build the application

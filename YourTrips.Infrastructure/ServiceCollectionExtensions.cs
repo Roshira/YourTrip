@@ -13,7 +13,9 @@ using YourTrips.Core.Entities;
 using YourTrips.Application.Interfaces; // Ваш Application Interfaces (для IAppEmailSender)
 using YourTrips.Core.Interfaces.Services; // Ваш Core Interfaces (для IAuthService)
 using YourTrips.Infrastructure.Data;
-using YourTrips.Infrastructure.Services.AuthServices; // Ваш AuthService та EmailSender
+using YourTrips.Infrastructure.Services.AuthServices;
+using YourTrips.Infrastructure.Services;
+using YourTrips.Application.Amadeus.Interfaces; // Ваш AuthService та EmailSender
 
 namespace YourTrips.Infrastructure
 {
@@ -24,49 +26,13 @@ namespace YourTrips.Infrastructure
             services.AddDbContext<YourTripsDbContext>(options =>
                 options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
 
-            // --- НАЛАШТУВАННЯ COOKIE, ЯКУ ВИКОРИСТОВУЄ IDENTITY ---
-            // Використовуємо ConfigureApplicationCookie для налаштування IdentityConstants.ApplicationScheme
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.Cookie.HttpOnly = false;
-            //    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-            //    options.Cookie.SameSite = SameSiteMode.None; // Рекомендовано для API + SPA
-            //    options.ExpireTimeSpan = TimeSpan.FromDays(14); // Тривалість сесії
-            //    options.SlidingExpiration = false; // Подовжувати сесію при активності
-            //    options.Cookie.Name = "YourTrips.AuthCookie"; // Кастомне ім'я кукі
-            //    options.Cookie.Domain = "localhost";
-            //    // Перевизначаємо поведінку редіректів для API
-            //    options.Events.OnRedirectToLogin = context =>
-            //    {
-            //        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            //        return Task.CompletedTask;
-            //    };
-            //    options.Events.OnRedirectToAccessDenied = context =>
-            //    {
-            //        context.Response.StatusCode = StatusCodes.Status403Forbidden;
-            //        return Task.CompletedTask;
-            //    };
-            //    options.Events.OnRedirectToLogout = context => // Обробка редіректу після виходу (опціонально)
-            //    {
-            //        context.Response.StatusCode = StatusCodes.Status200OK;
-            //        return Task.CompletedTask;
-            //    };
-            //});
-            // -----------------------------------------------------
-
-            // --- ВИДАЛЕНО ЯВНИЙ AddAuthentication ---
-            // services.AddAuthentication(IdentityConstants.ApplicationScheme)
-            //    .AddIdentityCookies(...); // Цей блок більше НЕ ПОТРІБЕН тут
-            // ------------------------------------------
-
-            // Реєстрація Авторизації (правила/політики)
             services.AddAuthorization(options =>
             {
                 // options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
             });
             services.AddIdentityApiEndpoints<User>(options =>
             {
-                // Налаштування Identity (вимоги до паролю, блокування і т.д.)
+                // setting Identity (вимоги до паролю, блокування і т.д.)
                 options.SignIn.RequireConfirmedAccount = true;
                 options.User.RequireUniqueEmail = true;
 
@@ -78,11 +44,21 @@ namespace YourTrips.Infrastructure
             })
                 .AddEntityFrameworkStores<YourTripsDbContext>()
                 .AddDefaultTokenProviders(); // Додає провай
+            services.AddHttpClient<IFlightSearchService, AmadeusFlightSearchService>(client =>
+            {
+                client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
+            });
+            services.AddHttpClient<IAmadeusLocationService,AmadeusLocationService>(client =>
+            {
+                client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
+            });
+            services.AddScoped<IAmadeusAuthService, AmadeusAuthService>();
+          
             // Реєстрація ваших сервісів
             services.AddScoped<IAuthService, AuthService>();
             services.Configure<SmtpSettings>(config.GetSection("SmtpSettings"));
             services.AddScoped<IAppEmailSender, EmailSender>();
-
+            services.AddScoped<SignInManager<User>, CustomSignInManager>();
             return services;
         }
     }

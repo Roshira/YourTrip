@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Application.Interfaces.Amadeus
+namespace YourTrips.Application.Amadeus.Models.Flight
 {
-    public interface IAmadeusAuthService
+    public class Meta
     {
-        Task<string> GetAccessToken();
+        public int Count { get; set; }
     }
 }
