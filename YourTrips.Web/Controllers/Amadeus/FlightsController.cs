@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using YourTrips.Application.Amadeus.Interfaces;
 using YourTrips.Application.Amadeus.Models.Flight;
 using YourTrips.Application.Interfaces;
+using YourTrips.Core.DTOs.Amadeus;
+using YourTrips.Core.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Web.Controllers;
 
@@ -16,17 +19,17 @@ public class FlightsController : ControllerBase
         _flightSearchService = flightSearchService;
     }
 
-    [HttpGet("search")]
+    [HttpPost("search")]
+    [AllowAnonymous]
     public async Task<ActionResult<FlightSearchResponse>> SearchFlights(
-        [FromQuery] string origin,
-        [FromQuery] string destination,
-        [FromQuery] DateTime departureDate,
-        [FromQuery] int passengers = 1)
+       [FromBody] FlightSearchRequestDto request
+        )
     {
+        Console.WriteLine($"Що отримуємо:request");
         try
         {
             var result = await _flightSearchService.SearchFlightsAsync(
-                origin, destination, departureDate, passengers);
+                request.Origin, request.Destination, request.Date, request.Travellers, request.Cabin);
 
             return Ok(result);
         }

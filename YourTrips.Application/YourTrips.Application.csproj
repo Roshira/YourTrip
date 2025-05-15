@@ -11,4 +11,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YourTrips.Core\YourTrips.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Core.DTOs.Amadeus
+namespace YourTrips.Core.DTOs.Amadeus.Locations
 {
     public class LocationResponse
     {

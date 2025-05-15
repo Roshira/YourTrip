@@ -77,7 +77,7 @@ namespace YourTrips.Infrastructure.Services.AuthServices
             var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
 
             // WARNING: Don't use local IP in production!
-            var confirmationLink = $"https://192.168.0.103:7271/api/auth/confirm-email?userId={newUser.Id}&token={Uri.EscapeDataString(emailToken)}";
+            var confirmationLink = $"https://192.168.0.104:3000/email-confirm?token={Uri.EscapeDataString(emailToken)}&userId={newUser.Id}";
 
             // Create HTML email message
             var htmlMessage = $"<p>Welcome to YourTrips!</p><p>Click the link below to confirm your email:</p><a href='{confirmationLink}'>Confirm Email</a>";

@@ -75,14 +75,50 @@ namespace YourTrips.Web.Controllers
             token = Uri.UnescapeDataString(token); // URL decode the token
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
+           
             if (!result.Succeeded)
             {
                 return BadRequest("Email confirmation failed. The link might be invalid or expired.");
             }
 
-            return Redirect($"https://your-app.com/email-confirm?token={token}");
+            return Redirect($"https://192.168.0.104:3000/email-confirm?token={Uri.EscapeDataString(token)}&userId={user.Id}");
         }
 
+        [HttpGet("emailConfirmed")]
+        [AllowAnonymous]
+        public async Task<IActionResult> EmailConfirmed(string token, string userId)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return BadRequest("User ID and token are required.");
+            }
+
+            if (!Guid.TryParse(userId, out _))
+            {
+                return BadRequest("Invalid User ID format.");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+           
+            if (user == null)
+            {
+                // Don't reveal whether user exists
+                return BadRequest("Unable to confirm email.");
+            }
+            if (user.EmailConfirmed == true)
+            {
+                return BadRequest("User already registered");
+            }
+            token = Uri.UnescapeDataString(token); // URL decode the token
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+            {
+                return BadRequest("Email confirmation failed. The link might be invalid or expired.");
+            }
+
+            return Ok(true);
+        }
         /// <summary>
         /// Gets current authenticated user's information
         /// </summary>

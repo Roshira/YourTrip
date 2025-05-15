@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Web;
 using YourTrips.Application.Amadeus.Interfaces;
 using YourTrips.Application.Amadeus.Models;
-using YourTrips.Core.DTOs.Amadeus;
+using YourTrips.Core.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Infrastructure.Services;
 

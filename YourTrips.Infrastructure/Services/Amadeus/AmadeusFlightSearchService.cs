@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using YourTrips.Application.Amadeus.Interfaces;
 using YourTrips.Application.Amadeus.Models.Flight;
+using YourTrips.Core.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Infrastructure.Services;
 
@@ -26,7 +27,9 @@ public class AmadeusFlightSearchService : IFlightSearchService
         string origin,
         string destination,
         DateTime departureDate,
-        int passengers)
+        List<TravelerDto> travelers,
+        string cabin
+        )
     {
         // Отримати токен доступу
         var token = await _authService.GetAccessTokenAsync();
@@ -34,13 +37,18 @@ public class AmadeusFlightSearchService : IFlightSearchService
         // Отримуємо IATA коди для міст
         var originCode = await _locationService.GetIataCodeFromCityNameAsync(origin);
         var destinationCode = await _locationService.GetIataCodeFromCityNameAsync(destination);
-
+        int adults = travelers.Count(t => t.TravelerType == "ADULT");
+        int children = travelers.Count(t => t.TravelerType == "CHILD");
+        int infants = travelers.Count(t => t.TravelerType == "INFANT");
         // Формуємо запит
         var query = $"/v2/shopping/flight-offers" +
-                    $"?originLocationCode={originCode}" +
-                    $"&destinationLocationCode={destinationCode}" +
-                    $"&departureDate={departureDate:yyyy-MM-dd}" +
-                    $"&adults={passengers}";
+                $"?originLocationCode={originCode}" +
+                $"&destinationLocationCode={destinationCode}" +
+                $"&departureDate={departureDate:yyyy-MM-dd}" +
+                $"&adults={adults}" +
+                $"&children={children}" +
+                $"&infants={infants}" +
+                $"&travelClass={cabin.ToUpper()}";
 
         var request = new HttpRequestMessage
         {
