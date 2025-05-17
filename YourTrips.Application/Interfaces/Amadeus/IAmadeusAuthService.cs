@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Application.Amadeus.Interfaces
+namespace YourTrips.Application.Interfaces.Interfaces
 {
     public interface IAmadeusAuthService
     {

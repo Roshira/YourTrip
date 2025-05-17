@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Core.DTOs.RapidBooking;
 
-namespace YourTrips.Application.RapidBooking.Interfaces
+namespace YourTrips.Application.Interfaces.Interfaces
 {
     public interface IBookingDescribeService
     {

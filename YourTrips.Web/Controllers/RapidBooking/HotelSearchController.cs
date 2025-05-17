@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using YourTrips.Application.RapidBooking.Interfaces;
+using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.RapidBooking;
 using YourTrips.Infrastructure.Services.BookingService;
 
@@ -20,6 +20,8 @@ public class HotelSearchController : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchHotels([FromQuery] HotelSearchRequestDto request)
     {
+
+        Console.WriteLine($"{request}");
         try
         {
             var hotels = await _bookingApiService.SearchHotelsAsync(request);
@@ -36,4 +38,7 @@ public class HotelSearchController : ControllerBase
         var result = await _bookingDescribeService.DescribeHotelAsync(request);
         return Ok(result);
     }
+
+
+
 }

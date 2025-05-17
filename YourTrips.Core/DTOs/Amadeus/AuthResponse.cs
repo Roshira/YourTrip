@@ -19,6 +19,6 @@ namespace YourTrips.Application.Amadeus.Models
         public string TokenType { get; set; }
 
         [JsonPropertyName("scope")]
-        public string Scope { get; set; }
+        public string? Scope { get; set; }
     }
 }

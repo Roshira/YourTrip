@@ -6,10 +6,10 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using global::YourTrips.Application.RapidBooking.Interfaces;
 using global::YourTrips.Core.DTOs.RapidBooking;
 using Microsoft.Extensions.Configuration;
 using MimeKit.Cryptography;
+using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.RapidBooking.AdditionalDTO;
 
 namespace YourTrips.Infrastructure.RapidBooking.Services
@@ -138,6 +138,7 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
                     return Enumerable.Empty<HotelResultDto>();
                 }
             }
+            
             catch (JsonException ex)
             {
                 Console.WriteLine($"Помилка десеріалізації JSON готелів: {ex.Message}");
@@ -152,8 +153,6 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
          (string.IsNullOrEmpty(request.HotelName) ||
           (h.HotelName?.Contains(request.HotelName, StringComparison.OrdinalIgnoreCase) ?? false)))
      .ToList();
-
-            //Console.WriteLine($"Знайдено {filteredResults.Count} готелів після фільтрації");
 
             // Мапінг до результатуF
             var result = filteredResults.Select(h => new HotelResultDto

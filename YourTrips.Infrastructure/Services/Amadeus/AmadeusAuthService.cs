@@ -2,9 +2,9 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
-using YourTrips.Application.Amadeus.Interfaces;
 using YourTrips.Application.Amadeus.Models;
 using YourTrips.Application.Interfaces;
+using YourTrips.Application.Interfaces.Interfaces;
 
 namespace YourTrips.Infrastructure.Services;
 

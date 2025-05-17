@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using YourTrips.Application.Amadeus.Models.Flight;
 using YourTrips.Core.DTOs.Amadeus.Flight;
 
-namespace YourTrips.Application.Amadeus.Interfaces
+namespace YourTrips.Application.Interfaces.Interfaces
 {
     public interface IFlightSearchService
     {

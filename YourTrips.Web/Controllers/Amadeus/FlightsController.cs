@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using YourTrips.Application.Amadeus.Interfaces;
+using MimeKit.Cryptography;
 using YourTrips.Application.Amadeus.Models.Flight;
 using YourTrips.Application.Interfaces;
+using YourTrips.Application.Interfaces.Amadeus;
+using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.Amadeus;
 using YourTrips.Core.DTOs.Amadeus.Flight;
 
@@ -13,10 +15,12 @@ namespace YourTrips.Web.Controllers;
 public class FlightsController : ControllerBase
 {
     private readonly IFlightSearchService _flightSearchService;
+    private readonly ISuggestListService _suggestListService;
 
-    public FlightsController(IFlightSearchService flightSearchService)
+    public FlightsController(IFlightSearchService flightSearchService, ISuggestListService suggestListService)
     {
         _flightSearchService = flightSearchService;
+        _suggestListService = suggestListService;
     }
 
     [HttpPost("search")]
@@ -36,6 +40,25 @@ public class FlightsController : ControllerBase
         catch (HttpRequestException ex)
         {
             return StatusCode(500, $"Error accessing Amadeus API: {ex.Message}");
+        }
+    }
+
+    [HttpGet("SuggestList")]
+    public async Task<IActionResult> SuggestList(string text)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return BadRequest("Search text cannot be empty.");
+
+            // Отримуємо дані з Amadeus API
+            var suggestions = await _suggestListService.GetLocationSuggestions(text);
+
+            return Ok(suggestions);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
 }

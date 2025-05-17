@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http.Json;
 using System.Web;
-using YourTrips.Application.Amadeus.Interfaces;
 using YourTrips.Application.Amadeus.Models;
+using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Infrastructure.Services;
