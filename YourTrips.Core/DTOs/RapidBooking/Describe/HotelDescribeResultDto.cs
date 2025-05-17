@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YourTrips.Core.DTOs.RapidBooking
+namespace YourTrips.Core.DTOs.RapidBooking.Describe
 {
     public class HotelDescribeResultDto
     {
@@ -12,6 +12,5 @@ namespace YourTrips.Core.DTOs.RapidBooking
         public string HotelDescribe2 { get; set; }
         public string HotelDescribe3 { get; set; }
         public string HotelDescribe4 { get; set; }
-        public string HotelDescribe5 { get; set; }
     }
 }

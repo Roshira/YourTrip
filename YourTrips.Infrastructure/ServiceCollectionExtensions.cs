@@ -20,6 +20,7 @@ using YourTrips.Infrastructure.Services.BookingService;
 using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Application.Interfaces.Amadeus;
 using YourTrips.Infrastructure.Services.Amadeus;
+using YourTrips.Application.Interfaces.RapidBooking;
 
 namespace YourTrips.Infrastructure
 {
@@ -59,8 +60,8 @@ namespace YourTrips.Infrastructure
 
             services.AddScoped<IBookingDescribeService, BookingDescribeService>();
             services.AddScoped<IAmadeusAuthService, AmadeusAuthService>();
-            services.AddScoped<ISuggestListService, SuggestListService>();
-            
+            services.AddScoped<ISuggestAmadeusService, SuggestAmadeusService>();
+            services.AddHttpClient<ISuggestBookingService, SuggestBookingService>();
             services.AddScoped<IBookingApiService, BookingApiService>();
             // Реєстрація ваших сервісів
             services.AddScoped<IAuthService, AuthService>();

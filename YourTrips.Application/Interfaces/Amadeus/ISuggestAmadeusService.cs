@@ -7,7 +7,7 @@ using YourTrips.Core.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Application.Interfaces.Amadeus
 {
-    public interface ISuggestListService
+    public interface ISuggestAmadeusService
     {
         Task<List<LocationData>> GetLocationSuggestions(string query);
     }

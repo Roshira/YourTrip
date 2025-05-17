@@ -14,18 +14,14 @@ namespace YourTrips.Web.Controllers
     {
         private readonly IAuthService _authService;
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager; // Added for logout functionality
-
         public AuthController(
             IAuthService authService,
-            UserManager<User> userManager,
-            SignInManager<User> signInManager
+            UserManager<User> userManager
 
             )
         {
             _authService = authService;
             _userManager = userManager;
-            _signInManager = signInManager;
         }
 
         /// <summary>

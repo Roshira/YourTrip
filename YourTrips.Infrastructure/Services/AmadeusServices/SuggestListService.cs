@@ -12,13 +12,13 @@ using YourTrips.Core.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Infrastructure.Services.Amadeus
 {
-    public class SuggestListService : ISuggestListService
+    public class SuggestAmadeusService : ISuggestAmadeusService
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
         private readonly IAmadeusAuthService _service;
 
-        public SuggestListService(HttpClient httpClient, IConfiguration configuration, IAmadeusAuthService service)
+        public SuggestAmadeusService(HttpClient httpClient, IConfiguration configuration, IAmadeusAuthService service)
         {
             _httpClient = httpClient;
             _configuration = configuration;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.RapidBooking;
+using YourTrips.Core.DTOs.RapidBooking.Describe;
 
 namespace YourTrips.Infrastructure.Services.BookingService
 {
@@ -31,8 +31,7 @@ namespace YourTrips.Infrastructure.Services.BookingService
         request.HotelId1,
         request.HotelId2,
         request.HotelId3,
-        request.HotelId4,
-        request.HotelId5
+        request.HotelId4
     };
 
             for (int i = 0; i < hotelIds.Count; i++)
@@ -60,7 +59,6 @@ namespace YourTrips.Infrastructure.Services.BookingService
                     case 1: hotelDescriptions.HotelDescribe2 = description; break;
                     case 2: hotelDescriptions.HotelDescribe3 = description; break;
                     case 3: hotelDescriptions.HotelDescribe4 = description; break;
-                    case 4: hotelDescriptions.HotelDescribe5 = description; break;
                 }
             }
 

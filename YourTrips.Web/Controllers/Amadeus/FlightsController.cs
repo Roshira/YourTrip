@@ -15,9 +15,9 @@ namespace YourTrips.Web.Controllers;
 public class FlightsController : ControllerBase
 {
     private readonly IFlightSearchService _flightSearchService;
-    private readonly ISuggestListService _suggestListService;
+    private readonly ISuggestAmadeusService _suggestListService;
 
-    public FlightsController(IFlightSearchService flightSearchService, ISuggestListService suggestListService)
+    public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService)
     {
         _flightSearchService = flightSearchService;
         _suggestListService = suggestListService;

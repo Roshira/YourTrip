@@ -61,11 +61,13 @@ namespace YourTrips.Web
                     policy
                         .WithOrigins("https://localhost:3000",
                         "https://192.168.0.104:3000") // Replace xxxx with your frontend port
-
-                   //    .AllowAnyOrigin() // Temporary for development, or if API is completely public
+                        
+                        //    .AllowAnyOrigin() // Temporary for development, or if API is completely public
                         .AllowAnyHeader()
+                         .WithMethods("GET", "POST", "PUT", "DELETE", "PATCH")// Додаємо PATCH
                         .AllowAnyMethod()
                         .AllowCredentials(); // Needed if frontend is on different domain and you're NOT using AllowAnyOrigin
+                    
                 });
             });
 
