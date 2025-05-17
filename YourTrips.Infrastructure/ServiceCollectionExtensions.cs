@@ -15,7 +15,10 @@ using YourTrips.Core.Interfaces.Services; // Ваш Core Interfaces (для IAut
 using YourTrips.Infrastructure.Data;
 using YourTrips.Infrastructure.Services.AuthServices;
 using YourTrips.Infrastructure.Services;
-using YourTrips.Application.Amadeus.Interfaces; // Ваш AuthService та EmailSender
+using YourTrips.Application.Amadeus.Interfaces;
+using YourTrips.Application.RapidBooking.Interfaces;
+using YourTrips.Infrastructure.RapidBooking.Services;
+using YourTrips.Infrastructure.Services.BookingService;
 
 namespace YourTrips.Infrastructure
 {
@@ -48,12 +51,14 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
-            services.AddHttpClient<IAmadeusLocationService,AmadeusLocationService>(client =>
+            services.AddHttpClient<IAmadeusLocationService, AmadeusLocationService>(client =>
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+
+            services.AddScoped<IBookingDescribeService, BookingDescribeService>();
             services.AddScoped<IAmadeusAuthService, AmadeusAuthService>();
-          
+            services.AddScoped<IBookingApiService, BookingApiService>();
             // Реєстрація ваших сервісів
             services.AddScoped<IAuthService, AuthService>();
             services.Configure<SmtpSettings>(config.GetSection("SmtpSettings"));
