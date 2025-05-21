@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Application.Interfaces.RapidBooking;
 using YourTrips.Core.DTOs.RapidBooking;
 using YourTrips.Core.DTOs.RapidBooking.Describe;
+using YourTrips.Core.Entities.Saved;
 using YourTrips.Infrastructure.Services.BookingService;
 
 [ApiController]
@@ -52,6 +57,32 @@ public class HotelSearchController : ControllerBase
         return Ok(suggestions);
     }
 
+    //[HttpPost("save")]
+    //[Authorize]
+    //public async Task<IActionResult> SaveHotel([FromQuery] string externalHotelId)
+    //{
+    //    if (string.IsNullOrEmpty(externalHotelId))
+    //        return BadRequest("ExternalHotelId is required.");
+
+    //    // Отримання UserId з токена
+    //    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+    //    if (userIdClaim == null)
+    //        return Unauthorized();
+
+    //    var userId = Guid.Parse(userIdClaim.Value);
+
+    //    var savedHotel = new SavedHotel
+    //    {
+    //        ExternalHotelId = externalHotelId,
+    //        UserId = userId,
+    //        SavedAt = DateTime.UtcNow
+    //    };
+
+    //    _context.SavedHotels.Add(savedHotel);
+    //    await _context.SaveChangesAsync();
+
+    //    return Ok(new { message = "Hotel saved successfully." });
+    //}
 
 
 

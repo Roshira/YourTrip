@@ -24,7 +24,7 @@ namespace YourTrips.Infrastructure.Services.BookingService
 
         public async Task<HotelDescribeResultDto> DescribeHotelAsync(HotelSearchDescribeDto request)
         {
-            var hotelDescriptions = new HotelDescribeResultDto();
+            var resultDto = new HotelDescribeResultDto();
 
             var hotelIds = new List<string?>
     {
@@ -33,12 +33,8 @@ namespace YourTrips.Infrastructure.Services.BookingService
         request.HotelId3,
         request.HotelId4
     };
-
-            for (int i = 0; i < hotelIds.Count; i++)
+            foreach (var hotelId in hotelIds.Where(id => !string.IsNullOrEmpty(id)))
             {
-                var hotelId = hotelIds[i];
-                if (string.IsNullOrEmpty(hotelId)) continue;
-
                 var url = $"https://{_apiHost}/v1/hotels/description?hotel_id={hotelId}&locale=en-us";
 
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -49,20 +45,16 @@ namespace YourTrips.Infrastructure.Services.BookingService
                 response.EnsureSuccessStatusCode();
 
                 var json = await response.Content.ReadAsStringAsync();
-                dynamic result = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+                dynamic jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
 
-                string description = result?.description ?? "No description available";
-
-                switch (i)
+                resultDto.HotelDescriptions.Add(new HotelDescribePurtDto
                 {
-                    case 0: hotelDescriptions.HotelDescribe1 = description; break;
-                    case 1: hotelDescriptions.HotelDescribe2 = description; break;
-                    case 2: hotelDescriptions.HotelDescribe3 = description; break;
-                    case 3: hotelDescriptions.HotelDescribe4 = description; break;
-                }
+                    HotelId = hotelId,
+                    HotelDescribe = jsonResponse?.description ?? "No description available"
+                });
             }
 
-            return hotelDescriptions;
+            return resultDto;
         }
     }
 }

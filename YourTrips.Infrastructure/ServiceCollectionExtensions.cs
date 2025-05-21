@@ -21,6 +21,8 @@ using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Application.Interfaces.Amadeus;
 using YourTrips.Infrastructure.Services.Amadeus;
 using YourTrips.Application.Interfaces.RapidBooking;
+using YourTrips.Infrastructure.Services.GoogleMapsServices;
+using YourTrips.Application.Interfaces.GoogleMaps;
 
 namespace YourTrips.Infrastructure
 {
@@ -57,7 +59,7 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
-
+            services.AddHttpClient<IGooglePlacesService ,GooglePlacesService>();
             services.AddScoped<IBookingDescribeService, BookingDescribeService>();
             services.AddScoped<IAmadeusAuthService, AmadeusAuthService>();
             services.AddScoped<ISuggestAmadeusService, SuggestAmadeusService>();

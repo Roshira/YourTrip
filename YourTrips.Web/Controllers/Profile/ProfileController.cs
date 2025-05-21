@@ -55,7 +55,7 @@ namespace YourTrips.Web.Controllers.Profile
                 return BadRequest(new
                 {
                     IsSuccess = false,
-                    Message = "UserName already exists"
+                    Message = $"Username {userName} already exists"
                 });
             }
 

@@ -20,7 +20,7 @@ namespace YourTrips.Web
 
             // Add API explorer services (required for Swagger)
             services.AddEndpointsApiExplorer();
-
+            services.AddHttpClient();
             // Configure Swagger documentation
             services.AddSwaggerGen(c =>
             {

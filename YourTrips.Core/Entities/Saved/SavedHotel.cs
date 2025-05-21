@@ -11,7 +11,7 @@ namespace YourTrips.Core.Entities.Saved
     {
     public int Id { get; set; }
     public Guid UserId { get; set; }
-    public string ExternalHotelId { get; set; } // ID з Booking.com API
+    public string HotelJson { get; set; }
     public DateTime SavedAt { get; set; } = DateTime.UtcNow;
     public User User { get; set; }
 

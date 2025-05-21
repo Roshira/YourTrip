@@ -22,9 +22,8 @@ namespace YourTrips.Infrastructure.Data.Configurations.SavedItemsConfigs
                     b.Property("SavedAt").HasDefaultValueSql("NOW() AT TIME ZONE 'UTC'");
                 });
             }
-
-            ConfigureSavedEntity<SavedHotel>("ExternalHotelId");
-            ConfigureSavedEntity<SavedFlights>("ExternalFlightsId");
+            ConfigureSavedEntity<SavedHotel>("HotelJson");
+            ConfigureSavedEntity<SavedFlights>("FlightsJson");
             ConfigureSavedEntity<SavedPlaces>("ExternalPlacesId");
             ConfigureSavedEntity<SavedTrainTrips>("ExternalTrainId");
             ConfigureSavedEntity<SavedBlaBlaCarTrips>("ExternalBlaBlaCarId");
