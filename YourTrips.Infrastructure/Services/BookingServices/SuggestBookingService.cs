@@ -26,6 +26,7 @@ public class SuggestBookingService : ISuggestBookingService
 
         var requestUrl = $"hotels/locations?locale=en-gb&name={Uri.EscapeDataString(searchTerm)}";
         var response = await _httpClient.GetAsync(requestUrl);
+        
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();

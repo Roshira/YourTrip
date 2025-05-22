@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
-using YourTrips.Core.Interfaces.Services;
+using YourTrips.Core.Interfaces;
 
 namespace YourTrips.Web.Controllers
 {

@@ -7,7 +7,9 @@ using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Application.Interfaces.RapidBooking;
 using YourTrips.Core.DTOs.RapidBooking;
 using YourTrips.Core.DTOs.RapidBooking.Describe;
+using YourTrips.Core.Entities;
 using YourTrips.Core.Entities.Saved;
+using YourTrips.Core.Interfaces.SavedServices;
 using YourTrips.Infrastructure.Services.BookingService;
 
 [ApiController]
@@ -17,13 +19,16 @@ public class HotelSearchController : ControllerBase
     private readonly IBookingApiService _bookingApiService;
     private readonly IBookingDescribeService _bookingDescribeService;
     private readonly ISuggestBookingService _suggest;
+    private readonly UserManager<User> _userManager;
+    private readonly ISavDelJSONModel _savDelJSONModel;
 
-    public HotelSearchController(IBookingApiService bookingApiService, IBookingDescribeService bookingDescribeService, ISuggestBookingService suggest)
+    public HotelSearchController(IBookingApiService bookingApiService, IBookingDescribeService bookingDescribeService, ISuggestBookingService suggest, UserManager<User> userManager, ISavDelJSONModel savDelJSONModel)
     {
         _bookingApiService = bookingApiService;
         _bookingDescribeService = bookingDescribeService;
         _suggest = suggest;
-
+        _userManager = userManager;
+        _savDelJSONModel = savDelJSONModel;
     }
 
     [HttpGet("search")]
@@ -57,33 +62,12 @@ public class HotelSearchController : ControllerBase
         return Ok(suggestions);
     }
 
-    //[HttpPost("save")]
-    //[Authorize]
-    //public async Task<IActionResult> SaveHotel([FromQuery] string externalHotelId)
-    //{
-    //    if (string.IsNullOrEmpty(externalHotelId))
-    //        return BadRequest("ExternalHotelId is required.");
-
-    //    // Отримання UserId з токена
-    //    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-    //    if (userIdClaim == null)
-    //        return Unauthorized();
-
-    //    var userId = Guid.Parse(userIdClaim.Value);
-
-    //    var savedHotel = new SavedHotel
-    //    {
-    //        ExternalHotelId = externalHotelId,
-    //        UserId = userId,
-    //        SavedAt = DateTime.UtcNow
-    //    };
-
-    //    _context.SavedHotels.Add(savedHotel);
-    //    await _context.SaveChangesAsync();
-
-    //    return Ok(new { message = "Hotel saved successfully." });
-    //}
-
-
-
+    [HttpPost("Saved")]
+    [Authorize]
+    public async Task<IActionResult> Saved([FromQuery] string hotelJson)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        await _savDelJSONModel.SaveJsonAsync<SavedHotel>(user.Id, hotelJson);
+        return Ok();
+    }
 }

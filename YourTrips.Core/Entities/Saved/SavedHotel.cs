@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Core.Interfaces.Saved;
 
 namespace YourTrips.Core.Entities.Saved
 {
 
-    public class SavedHotel
+    public class SavedHotel : ISavedEntity
     {
     public int Id { get; set; }
     public Guid UserId { get; set; }
@@ -16,4 +17,7 @@ namespace YourTrips.Core.Entities.Saved
     public User User { get; set; }
 
     }
+    
 }
+
+

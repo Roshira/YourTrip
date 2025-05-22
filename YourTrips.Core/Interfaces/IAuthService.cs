@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Core.DTOs.Auth;
 
-namespace YourTrips.Core.Interfaces.Services
+namespace YourTrips.Core.Interfaces
 {
     public interface IAuthService
     {

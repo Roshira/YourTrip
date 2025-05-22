@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
+using YourTrips.Core.Interfaces;
 
 namespace YourTrips.Web.Controllers.Profile
 {
@@ -12,10 +13,12 @@ namespace YourTrips.Web.Controllers.Profile
     {
 
         private readonly UserManager<User> _userManager;
+        private readonly IRewriteUserName _rewriteUserName;
 
-        public ProfileController(UserManager<User> userManager)
+        public ProfileController(UserManager<User> userManager, IRewriteUserName rewrite)
         {
             _userManager = userManager;
+            _rewriteUserName = rewrite;
         }
 
         [HttpGet("Profile")]
@@ -43,41 +46,12 @@ namespace YourTrips.Web.Controllers.Profile
         [Authorize]
         public async Task<IActionResult> RewriteUserName([FromQuery] string userName)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Unauthorized(new { Message = "User not found for the current session." });
-            }
+            var result = await _rewriteUserName.RewriteUserNameAsync(User, userName);
 
-            var existingUser = await _userManager.FindByNameAsync(userName);
-            if (existingUser != null)
-            {
-                return BadRequest(new
-                {
-                    IsSuccess = false,
-                    Message = $"Username {userName} already exists"
-                });
-            }
+            if (!result.IsSuccess)
+                return BadRequest(result);
 
-            user.UserName = userName;
-            user.NormalizedUserName = _userManager.NormalizeName(userName);
-
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-            {
-                return BadRequest(new
-                {
-                    IsSuccess = false,
-                    Message = "Failed to update username",
-                    Errors = result.Errors.Select(e => e.Description)
-                });
-            }
-
-            return Ok(new
-            {
-                IsSuccess = true,
-                Message = "UserName successfully updated"
-            });
+            return Ok(result);
         }
 
     }

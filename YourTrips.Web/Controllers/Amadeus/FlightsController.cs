@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit.Cryptography;
 using YourTrips.Application.Amadeus.Models.Flight;
@@ -7,6 +8,9 @@ using YourTrips.Application.Interfaces.Amadeus;
 using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.Amadeus;
 using YourTrips.Core.DTOs.Amadeus.Flight;
+using YourTrips.Core.Entities;
+using YourTrips.Core.Entities.Saved;
+using YourTrips.Core.Interfaces.SavedServices;
 
 namespace YourTrips.Web.Controllers;
 
@@ -16,11 +20,15 @@ public class FlightsController : ControllerBase
 {
     private readonly IFlightSearchService _flightSearchService;
     private readonly ISuggestAmadeusService _suggestListService;
+    private readonly UserManager<User> _userManager;
+    private readonly ISavDelJSONModel _savDelJSONModel;
 
-    public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService)
+    public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService, UserManager<User> userManager, ISavDelJSONModel savDelJSONModel)
     {
         _flightSearchService = flightSearchService;
         _suggestListService = suggestListService;
+        _userManager = userManager;
+        _savDelJSONModel = savDelJSONModel; 
     }
 
     [HttpPost("search")]
@@ -29,7 +37,6 @@ public class FlightsController : ControllerBase
        [FromBody] FlightSearchRequestDto request
         )
     {
-        Console.WriteLine($"Що отримуємо:request");
         try
         {
             var result = await _flightSearchService.SearchFlightsAsync(
@@ -60,5 +67,13 @@ public class FlightsController : ControllerBase
         {
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
+    }
+    [HttpPost("Saved")]
+    [Authorize]
+    public async Task<IActionResult> Saved([FromQuery] string flightsJson)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        await _savDelJSONModel.SaveJsonAsync<SavedFlights>(user.Id, flightsJson);
+        return Ok();
     }
 }

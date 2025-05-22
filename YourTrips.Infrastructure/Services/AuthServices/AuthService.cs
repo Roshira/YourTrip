@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using YourTrips.Application.Interfaces;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
-using YourTrips.Core.Interfaces.Services;
+using YourTrips.Core.Interfaces;
 
 namespace YourTrips.Infrastructure.Services.AuthServices
 {

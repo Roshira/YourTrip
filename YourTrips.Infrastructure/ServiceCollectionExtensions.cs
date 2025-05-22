@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using YourTrips.Application.Common; // Ваш Application Common
 using YourTrips.Core.Entities;
 using YourTrips.Application.Interfaces; // Ваш Application Interfaces (для IAppEmailSender)
-using YourTrips.Core.Interfaces.Services; // Ваш Core Interfaces (для IAuthService)
 using YourTrips.Infrastructure.Data;
 using YourTrips.Infrastructure.Services.AuthServices;
 using YourTrips.Infrastructure.Services;
@@ -23,6 +22,10 @@ using YourTrips.Infrastructure.Services.Amadeus;
 using YourTrips.Application.Interfaces.RapidBooking;
 using YourTrips.Infrastructure.Services.GoogleMapsServices;
 using YourTrips.Application.Interfaces.GoogleMaps;
+using YourTrips.Infrastructure.Services.ProfileServices;
+using YourTrips.Core.Interfaces;
+using YourTrips.Core.Interfaces.SavedServices;
+using YourTrips.Infrastructure.Services.SavedServices;
 
 namespace YourTrips.Infrastructure
 {
@@ -59,6 +62,8 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<ISavDelJSONModel, SavDelJSONModel>();
+            services.AddScoped<IRewriteUserName, RewriteUserName>();
             services.AddHttpClient<IGooglePlacesService ,GooglePlacesService>();
             services.AddScoped<IBookingDescribeService, BookingDescribeService>();
             services.AddScoped<IAmadeusAuthService, AmadeusAuthService>();
