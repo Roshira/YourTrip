@@ -15,10 +15,11 @@ namespace YourTrips.Web.Controllers.Route.Saved
     {
         private readonly UserManager<User> _userManager;
         private readonly ISavDelJSONModel _savDelJSONModel;
+        private readonly ISaveDelId _saveDelId;
 
-        public SavedController(UserManager<User> userManager, ISavDelJSONModel savDelJSONModel)
+        public SavedController(UserManager<User> userManager, ISavDelJSONModel savDelJSONModel, ISaveDelId saveDelId)
         {
-           
+            _saveDelId = saveDelId;
             _userManager = userManager;
             _savDelJSONModel = savDelJSONModel;
         }
@@ -27,7 +28,6 @@ namespace YourTrips.Web.Controllers.Route.Saved
         [Authorize]
         public async Task<IActionResult> SavedFlights([FromQuery] string flightsJson, int routeId)
         {
-            var user = await _userManager.GetUserAsync(User);
             await _savDelJSONModel.SaveJsonAsync<SavedFlights>(flightsJson, routeId);
             return Ok();
         }
@@ -36,8 +36,14 @@ namespace YourTrips.Web.Controllers.Route.Saved
         [Authorize]
         public async Task<IActionResult> SavedHotel([FromQuery] string hotelJson, int routeId)
         {
-            var user = await _userManager.GetUserAsync(User);
             await _savDelJSONModel.SaveJsonAsync<SavedHotel>(hotelJson, routeId);
+            return Ok();
+        }
+        [HttpPost("places")]
+        [Authorize]
+        public async Task<IActionResult> SavedPlaces([FromQuery] string placeId, int routeId)
+        {
+            await _saveDelId.SaveIdAsync<SavedPlaces>(placeId, routeId);
             return Ok();
         }
     }

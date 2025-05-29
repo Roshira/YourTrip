@@ -25,9 +25,8 @@ namespace YourTrips.Core.DTOs
             Errors = errors
         };
     }
-}
-namespace YourTrips.Core.DTOs
-{
+
+
     public class ResultDto<T> : ResultDto
     {
         public T Data { get; set; }

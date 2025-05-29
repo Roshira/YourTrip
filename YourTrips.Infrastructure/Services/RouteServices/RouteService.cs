@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YourTrips.Core.DTOs;
 using YourTrips.Core.DTOs.Route;
+using YourTrips.Core.DTOs.Route.PartRoutes;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Infrastructure.Data;

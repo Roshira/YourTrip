@@ -64,6 +64,7 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<ISaveDelId, SaveDelId>();
             services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<ISavDelJSONModel, SavDelJSONModel>();
             services.AddScoped<IRewriteUserName, RewriteUserName>();

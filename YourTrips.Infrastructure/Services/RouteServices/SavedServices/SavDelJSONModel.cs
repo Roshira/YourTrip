@@ -38,7 +38,14 @@ namespace YourTrips.Infrastructure.Services.RouteServices.SavedServices
                 SavedAt = DateTime.UtcNow
             };
 
-            var jsonProp = typeof(T).GetProperty("Json"); // Спрощений пошук властивості
+            var jsonProp = typeof(T).GetProperties()
+                .FirstOrDefault(p => p.Name.EndsWith("Json", StringComparison.OrdinalIgnoreCase));
+
+            if (jsonProp == null)
+            {
+                return ResultDto.Fail("Json property not found.");
+            }
+
             jsonProp?.SetValue(entity, json);
 
             _context.Set<T>().Add(entity);

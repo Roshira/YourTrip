@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Core.DTOs.Route;
 using YourTrips.Core.DTOs;
+using YourTrips.Core.DTOs.Route.PartRoutes;
 
 namespace YourTrips.Core.Interfaces.Routes
 {

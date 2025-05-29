@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using YourTrips.Application.Interfaces;
-using YourTrips.Core.DTOs.Route;
+using YourTrips.Core.DTOs.Route.PartRoutes;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Web.Extensions;
 
