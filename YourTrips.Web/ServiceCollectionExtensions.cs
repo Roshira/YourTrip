@@ -18,6 +18,7 @@ namespace YourTrips.Web
             // Add MVC controllers support
             services.AddControllers();
 
+            services.AddAutoMapper(typeof(YourTrips.Infrastructure.MappingProfile));
             // Add API explorer services (required for Swagger)
             services.AddEndpointsApiExplorer();
             services.AddHttpClient();

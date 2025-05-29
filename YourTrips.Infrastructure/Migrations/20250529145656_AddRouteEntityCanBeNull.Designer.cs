@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using YourTrips.Infrastructure.Data;
@@ -11,9 +12,11 @@ using YourTrips.Infrastructure.Data;
 namespace YourTrips.Infrastructure.Migrations
 {
     [DbContext(typeof(YourTripsDbContext))]
-    partial class YourTripsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250529145656_AddRouteEntityCanBeNull")]
+    partial class AddRouteEntityCanBeNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

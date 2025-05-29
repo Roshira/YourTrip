@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Core.Entities.Achievement;
 using YourTrips.Core.Entities.Saved;
+using YourTrips.Core.Entities;
 
 
 namespace YourTrips.Core.Entities
@@ -18,14 +19,8 @@ namespace YourTrips.Core.Entities
         [StringLength(500)]
         public string? SavedYourMemoirs { get; set; }
 
-        public ICollection<SavedHotel> SavedHotels { get; set; }
-        public ICollection<SavedFlights> SavedFlights { get; set; }
-        public ICollection<SavedBlaBlaCarTrips> SavedBlaBlaCarTrips { get; set; }
-        public ICollection<SavedPlaces> SavedPlaces { get; set; }
-        public ICollection<SavedTrainTrips> SavedTrainTrips { get; set; }
-
+        public ICollection<Route> Routes { get; set; }
         public ICollection<UserAchievement> UserAchievements { get; set; }
 
-        public ICollection<TripHistory> TripHistories { get; set; }
     }
 }

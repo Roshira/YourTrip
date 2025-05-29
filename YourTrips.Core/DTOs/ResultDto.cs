@@ -26,3 +26,24 @@ namespace YourTrips.Core.DTOs
         };
     }
 }
+namespace YourTrips.Core.DTOs
+{
+    public class ResultDto<T> : ResultDto
+    {
+        public T Data { get; set; }
+
+        public static ResultDto<T> Success(T data, string message = "Success") => new()
+        {
+            IsSuccess = true,
+            Message = message,
+            Data = data
+        };
+
+        public static new ResultDto<T> Fail(string message, IEnumerable<string>? errors = null) => new()
+        {
+            IsSuccess = false,
+            Message = message,
+            Errors = errors
+        };
+    }
+}

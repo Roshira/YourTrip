@@ -8,7 +8,6 @@ using YourTrips.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using YourTrips.Core.Interfaces;
-using YourTrips.Core.Interfaces.SavedServices;
 
 [ApiController]
 [AllowAnonymous]

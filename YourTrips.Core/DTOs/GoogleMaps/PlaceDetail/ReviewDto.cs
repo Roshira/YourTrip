@@ -5,11 +5,12 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace YourTrips.Core.DTOs.GoogleMaps.PlaceDetail.ResponseClase
+namespace YourTrips.Core.DTOs.GoogleMaps.PlaceDetail
 {
-    public class Review
+    public class ReviewDto
     {
-        public string Author_Name { get; set; }
+        [JsonPropertyName("author_name")]
+        public string AuthorName { get; set; }
         public double Rating { get; set; }
         public string Text { get; set; }
     }

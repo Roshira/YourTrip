@@ -55,7 +55,12 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
                 Latitude = r?.Geometry?.Location?.Lat,
                 Longitude = r?.Geometry?.Location?.Lng,
                 PhotoUrl = r?.Photos?.Take(6).Select(p => $"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={p.Photo_Reference}&key={_apiKey}").ToList(),
-                Reviews = r?.Reviews?.Select(rv => rv.Text).ToList(),
+                Reviews = r?.Reviews?.Select(rv => new ReviewDto
+                {
+                    AuthorName = rv.Author_Name,
+                    Rating = rv.Rating,
+                    Text = rv.Text
+                }).ToList(),
                 Opening_Now = r?.Opening_Hours?.Open_Now,
                 WeekdayText = r?.Opening_Hours?.Weekday_Text,
                 Rating = r?.Rating,

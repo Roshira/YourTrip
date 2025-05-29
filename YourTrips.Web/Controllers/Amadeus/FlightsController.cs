@@ -10,7 +10,7 @@ using YourTrips.Core.DTOs.Amadeus;
 using YourTrips.Core.DTOs.Amadeus.Flight;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Entities.Saved;
-using YourTrips.Core.Interfaces.SavedServices;
+using YourTrips.Core.Interfaces.Routes.Saved;
 
 namespace YourTrips.Web.Controllers;
 
@@ -20,15 +20,13 @@ public class FlightsController : ControllerBase
 {
     private readonly IFlightSearchService _flightSearchService;
     private readonly ISuggestAmadeusService _suggestListService;
-    private readonly UserManager<User> _userManager;
-    private readonly ISavDelJSONModel _savDelJSONModel;
 
-    public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService, UserManager<User> userManager, ISavDelJSONModel savDelJSONModel)
+
+    public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService)
     {
         _flightSearchService = flightSearchService;
         _suggestListService = suggestListService;
-        _userManager = userManager;
-        _savDelJSONModel = savDelJSONModel; 
+   
     }
 
     [HttpPost("search")]
@@ -68,12 +66,5 @@ public class FlightsController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
-    [HttpPost("Saved")]
-    [Authorize]
-    public async Task<IActionResult> Saved([FromQuery] string flightsJson)
-    {
-        var user = await _userManager.GetUserAsync(User);
-        await _savDelJSONModel.SaveJsonAsync<SavedFlights>(user.Id, flightsJson);
-        return Ok();
-    }
+   
 }

@@ -1,17 +1,19 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Core.Entities;
 
 namespace YourTrips.Core.Entities.Saved
 {
     public class SavedPlaces
     {
         public int Id { get; set; }
-        public Guid UserId { get; set; }
+        public int RouteId { get; set; }  // Зв'язок з маршрутом, а не з User
+        public Route Route { get; set; }
         public string ExternalPlacesId { get; set; } // ID з Booking.com API
         public DateTime SavedAt { get; set; } = DateTime.UtcNow;
-        public User User { get; set; }
     }
 }

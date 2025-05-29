@@ -18,7 +18,7 @@ namespace YourTrips.Core.DTOs.GoogleMaps.PlaceDetail
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
         public List<string> PhotoUrl { get; set; }
-        public List<string> Reviews { get; set; }
+        public List<ReviewDto> Reviews { get; set; }
         public bool? Opening_Now { get; set; }
         public List<string> WeekdayText { get; set; }
         public double? Rating { get; set; }

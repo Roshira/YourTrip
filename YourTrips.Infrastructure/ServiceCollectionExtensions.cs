@@ -24,8 +24,10 @@ using YourTrips.Infrastructure.Services.GoogleMapsServices;
 using YourTrips.Application.Interfaces.GoogleMaps;
 using YourTrips.Infrastructure.Services.ProfileServices;
 using YourTrips.Core.Interfaces;
-using YourTrips.Core.Interfaces.SavedServices;
-using YourTrips.Infrastructure.Services.SavedServices;
+using YourTrips.Infrastructure.Services.RouteServices.SavedServices;
+using YourTrips.Core.Interfaces.Routes.Saved;
+using YourTrips.Core.Interfaces.Routes;
+using YourTrips.Infrastructure.Services.Routes;
 
 namespace YourTrips.Infrastructure
 {
@@ -62,6 +64,7 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<ISavDelJSONModel, SavDelJSONModel>();
             services.AddScoped<IRewriteUserName, RewriteUserName>();
             services.AddHttpClient<IGooglePlacesService ,GooglePlacesService>();

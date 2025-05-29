@@ -9,7 +9,7 @@ using YourTrips.Core.DTOs.RapidBooking;
 using YourTrips.Core.DTOs.RapidBooking.Describe;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Entities.Saved;
-using YourTrips.Core.Interfaces.SavedServices;
+using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Infrastructure.Services.BookingService;
 
 [ApiController]
@@ -62,12 +62,5 @@ public class HotelSearchController : ControllerBase
         return Ok(suggestions);
     }
 
-    [HttpPost("Saved")]
-    [Authorize]
-    public async Task<IActionResult> Saved([FromQuery] string hotelJson)
-    {
-        var user = await _userManager.GetUserAsync(User);
-        await _savDelJSONModel.SaveJsonAsync<SavedHotel>(user.Id, hotelJson);
-        return Ok();
-    }
+ 
 }
