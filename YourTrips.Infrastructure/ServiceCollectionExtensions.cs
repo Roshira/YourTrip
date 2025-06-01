@@ -28,6 +28,7 @@ using YourTrips.Infrastructure.Services.RouteServices.SavedServices;
 using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Infrastructure.Services.Routes;
+using YourTrips.Infrastructure.Services.RouteServices;
 
 namespace YourTrips.Infrastructure
 {
@@ -64,6 +65,7 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<ISavDelJSONModel, SavDelJSONModel>();
             services.AddScoped<IRewriteUserName, RewriteUserName>();

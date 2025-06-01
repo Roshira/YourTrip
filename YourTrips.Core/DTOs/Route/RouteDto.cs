@@ -7,6 +7,8 @@ namespace YourTrips.Core.DTOs.Route
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Review { get; set; }
+        public double Rating { get; set; }
         public DateTime CreatedAt { get; set; }
         public string ImageUrl { get; set; }
         public bool IsCompleted { get; set; }
