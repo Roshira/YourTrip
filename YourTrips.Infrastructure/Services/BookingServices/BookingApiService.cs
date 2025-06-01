@@ -168,7 +168,8 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
                 ReviewCount = h.ReviewCount,
                 MainPhotoUrl = h.MainPhotoUrl,
                 PriceBreakdown = h.PriceBreakdown,
-                Url = h.Url
+                Url = h.Url,
+                Type = "Hotel"
             }).ToList();
 
             return result;

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using YourTrips.Infrastructure.Data;
@@ -11,9 +12,11 @@ using YourTrips.Infrastructure.Data;
 namespace YourTrips.Infrastructure.Migrations
 {
     [DbContext(typeof(YourTripsDbContext))]
-    partial class YourTripsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250530091517_AddRouteImageUrl")]
+    partial class AddRouteImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,10 +218,6 @@ namespace YourTrips.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("boolean");
 
@@ -233,6 +232,10 @@ namespace YourTrips.Infrastructure.Migrations
                     b.Property<string>("Review")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("RouteUtl")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -306,7 +309,7 @@ namespace YourTrips.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("PlaceJson")
+                    b.Property<string>("ExternalPlacesId")
                         .IsRequired()
                         .HasColumnType("text");
 

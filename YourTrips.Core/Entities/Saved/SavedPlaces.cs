@@ -14,7 +14,7 @@ namespace YourTrips.Core.Entities.Saved
         public int Id { get; set; }
         public int RouteId { get; set; }  // Зв'язок з маршрутом, а не з User
         public Route Route { get; set; }
-        public string ExternalPlacesId { get; set; } // ID з Booking.com API
+        public string PlaceJson { get; set; } // ID з Booking.com API
         public DateTime SavedAt { get; set; } = DateTime.UtcNow;
     }
 }

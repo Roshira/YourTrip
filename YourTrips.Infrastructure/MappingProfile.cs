@@ -9,7 +9,6 @@ namespace YourTrips.Infrastructure
         public MappingProfile()
         {
             CreateMap<Route, RouteDto>();
-            CreateMap<Route, RouteDetailsDto>();
             CreateMap<RouteDto, Route>(); // Якщо треба в зворотному напрямку
         }
     }

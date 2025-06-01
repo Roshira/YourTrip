@@ -1,13 +1,19 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using YourTrips.Application.Interfaces.GoogleMaps;
 using YourTrips.Core.DTOs;
+using YourTrips.Core.DTOs.GoogleMaps;
 using YourTrips.Core.DTOs.Route;
 using YourTrips.Core.DTOs.Route.PartRoutes;
+using YourTrips.Core.DTOs.Route.Saved;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Infrastructure.Data;
@@ -18,9 +24,11 @@ namespace YourTrips.Infrastructure.Services.Routes
     {
         private readonly YourTripsDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IGooglePlacesService _googlePlacesService;
 
-        public RouteService(YourTripsDbContext context, IMapper mapper)
+        public RouteService(YourTripsDbContext context, IMapper mapper, IGooglePlacesService googlePlacesService)
         {
+            _googlePlacesService = googlePlacesService;
             _context = context;
             _mapper = mapper;
         }
@@ -59,13 +67,24 @@ namespace YourTrips.Infrastructure.Services.Routes
             var routes = await _context.Routes
                 .Where(r => r.UserId == userId)
                 .OrderByDescending(r => r.CreatedAt)
+                
                 .ToListAsync();
 
             return ResultDto<List<RouteDto>>.Success(
                 _mapper.Map<List<RouteDto>>(routes));
         }
 
-        public async Task<ResultDto<RouteDetailsDto>> GetRouteDetailsAsync(int routeId)
+
+        public async Task<ResultDto> UpdateImageAsync(string imageUrl, int routeId)
+        {
+            var route = await _context.Routes.FindAsync(routeId);
+            if (route == null)
+                return ResultDto.Fail("Маршрут не знайдено");
+            route.ImageUrl = imageUrl;
+            return ResultDto<RouteDto>.Success("Success");
+        }
+
+        public async Task<ShowRouteDto> ShowRouteAsync(int routeId)
         {
             var route = await _context.Routes
                 .Include(r => r.SavedHotels)
@@ -73,25 +92,39 @@ namespace YourTrips.Infrastructure.Services.Routes
                 .Include(r => r.SavedPlaces)
                 .FirstOrDefaultAsync(r => r.Id == routeId);
 
-            if (route == null)
-                return ResultDto<RouteDetailsDto>.Fail("Маршрут не знайдено");
+            if (route == null) return null;
 
-            var result = _mapper.Map<RouteDetailsDto>(route);
+            var savedList = new List<SavedDto>();
 
-            // Додаткове наповнення SavedItems
-            result.SavedItems = new List<SavedItemDto>();
+            savedList.AddRange(route.SavedHotels.Select(h => new SavedDto
+            {
+                RouteId = h.RouteId,
+                Json = h.HotelJson,
+                Type = "Hotel"
+               
+            }));
 
-            if (route.SavedHotels?.Any() == true)
-                result.SavedItems.AddRange(route.SavedHotels.Select(h => new SavedItemDto
-                {
-                    Id = h.Id,
-                    Type = "hotel",
-                    SavedAt = h.SavedAt
-                }));
+            savedList.AddRange(route.SavedFlights.Select(f => new SavedDto
+            {
+                RouteId = f.RouteId,
+                Json = f.FlightsJson,
+                Type = "Flight"
+            }));
 
-            // Аналогічно для інших типів...
+            savedList.AddRange(route.SavedPlaces.Select(f => new SavedDto
+            {
+                
+                RouteId = f.RouteId,
+                Json = f.PlaceJson,
+                Type = "Place"
+            }));
 
-            return ResultDto<RouteDetailsDto>.Success(result);
+
+
+            return new ShowRouteDto
+            {
+                SavedJson = savedList
+            };
         }
     }
 }

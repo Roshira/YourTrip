@@ -24,7 +24,7 @@ namespace YourTrips.Infrastructure.Data.Configurations.SavedItemsConfigs
             }
             ConfigureSavedEntity<SavedHotel>("HotelJson");
             ConfigureSavedEntity<SavedFlights>("FlightsJson");
-            ConfigureSavedEntity<SavedPlaces>("ExternalPlacesId");
+            ConfigureSavedEntity<SavedPlaces>("PlaceJson");
         }
     }
 }

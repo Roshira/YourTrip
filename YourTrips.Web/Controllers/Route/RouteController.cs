@@ -45,11 +45,19 @@ namespace YourTrips.Web.Controllers.Route
             return result.ToApiResponse();
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetDetails(int id)
+        [HttpPost("updateImage")]
+        public async Task<IActionResult> UpdateImage(string imageUrl, int id)
         {
-            var result = await _routeService.GetRouteDetailsAsync(id);
+            var result = await _routeService.UpdateImageAsync(imageUrl, id);
             return result.ToApiResponse();
+        }
+        [HttpGet("showRoute")]
+        public async Task<IActionResult> ShowRoute(int routeId)
+        {
+            var result = await _routeService.ShowRouteAsync(routeId);
+            if (result == null) return NotFound("Маршрут не знайдено");
+
+            return Ok(result);
         }
     }
 }

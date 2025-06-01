@@ -70,6 +70,7 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
                 Url = r?.Url,
                 BusinessStatus = r?.Business_Status,
                 Summary = r?.Editorial_Summary?.Overview
+                
             };
         }
 

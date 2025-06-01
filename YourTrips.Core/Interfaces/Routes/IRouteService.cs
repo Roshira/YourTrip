@@ -15,7 +15,8 @@ namespace YourTrips.Core.Interfaces.Routes
         Task<ResultDto<RouteDto>> CreateRouteAsync(CreateRouteDto dto, Guid userId);
         Task<ResultDto> DeleteRouteAsync(int routeId);
         Task<ResultDto<List<RouteDto>>> GetAllUserRoutesAsync(Guid userId);
-        Task<ResultDto<RouteDetailsDto>> GetRouteDetailsAsync(int routeId);
+        Task<ResultDto> UpdateImageAsync(string imageUrl, int routeId);
+        Task<ShowRouteDto> ShowRouteAsync(int routeId);
     }
 
 }
