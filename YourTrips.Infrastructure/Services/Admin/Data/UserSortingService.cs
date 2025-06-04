@@ -43,7 +43,7 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             var userRoutes = users
                 .Select(u => new UserRoutes
                 {
-                    User = u,
+                    User = MapToUserDto(u),
                     RoutesCount = u.Routes?.Count ?? 0
                 })
                 .ToList();
@@ -67,7 +67,7 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             var userRoutes = users
                 .Select(u => new UserRoutes
                 {
-                    User = u,
+                    User = MapToUserDto(u),
                     RoutesCount = u.Routes?.Count ?? 0
                 })
                 .ToList();
@@ -128,6 +128,15 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
 
             return Merge(leftTask.Result, rightTask.Result);
         }
-
+        private UserDto MapToUserDto(User user)
+        {
+            return new UserDto
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email
+            };
+        }
     }
-}
+  
+    }

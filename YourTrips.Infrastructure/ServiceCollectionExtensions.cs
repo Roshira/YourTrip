@@ -69,6 +69,8 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<IRestaurantSorter, ParisRestaurantSorter>();
+            services.AddScoped<IParisRestaurants, ParisRestaurants>();
             services.AddScoped<IUserSortingService, UserSortingService>();
             services.AddScoped<ICreateAndShowAdchivement, CreateAndShowAdchivement>();
             services.AddScoped<IReviewService, ReviewService>();

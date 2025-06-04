@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.Entities;
 
 namespace YourTrips.Core.DTOs.Admin.Data
 {
-    public class UserRoutes
+    public class UserDto
     {
-        public UserDto User { get; set; }
-        public int RoutesCount { get; set; }
+        public Guid Id { get; set; }         
+        public string UserName { get; set; }
+        public string Email { get; set; }
     }
 }
