@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces;
+using YourTrips.Infrastructure.Data;
 
 namespace YourTrips.Web.Controllers.Profile
 {
@@ -14,11 +16,13 @@ namespace YourTrips.Web.Controllers.Profile
 
         private readonly UserManager<User> _userManager;
         private readonly IRewriteUserName _rewriteUserName;
+        private readonly YourTripsDbContext _dbContext;
 
-        public ProfileController(UserManager<User> userManager, IRewriteUserName rewrite)
+        public ProfileController(UserManager<User> userManager, IRewriteUserName rewrite, YourTripsDbContext context)
         {
             _userManager = userManager;
             _rewriteUserName = rewrite;
+            _dbContext = context;
         }
 
         [HttpGet("Profile")]
@@ -33,12 +37,22 @@ namespace YourTrips.Web.Controllers.Profile
                 // Shouldn't happen if cookie is valid
                 return Unauthorized(new { Message = "User not found for the current session." });
             }
+            var userRoles = await _dbContext.UserRoles
+    .Where(ur => ur.UserId == user.Id)
+    .ToListAsync();
 
+            var roleIds = userRoles.Select(ur => ur.RoleId).ToList();
+
+            var role = await _dbContext.Roles
+                .Where(r => roleIds.Contains(r.Id))
+                .Select(r => r.Name)
+                .ToListAsync();
             return Ok(new
             {
                 user.Email,
                 user.UserName,
-                user.CreatedAt
+                user.CreatedAt,
+                role
             });
         }
 

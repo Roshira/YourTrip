@@ -29,6 +29,9 @@ using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Infrastructure.Services.Routes;
 using YourTrips.Infrastructure.Services.RouteServices;
+using YourTrips.Core.Interfaces.Achievements;
+using YourTrips.Core.Interfaces.Admin;
+using YourTrips.Infrastructure.Services.Admin.Data;
 
 namespace YourTrips.Infrastructure
 {
@@ -55,6 +58,7 @@ namespace YourTrips.Infrastructure
 
                 // Можна додати налаштування паролю тут
             })
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<YourTripsDbContext>()
                 .AddDefaultTokenProviders(); // Додає провай
             services.AddHttpClient<IFlightSearchService, AmadeusFlightSearchService>(client =>
@@ -65,6 +69,8 @@ namespace YourTrips.Infrastructure
             {
                 client.BaseAddress = new Uri(config["Amadeus:BaseUrl"]);
             });
+            services.AddScoped<IUserSortingService, UserSortingService>();
+            services.AddScoped<ICreateAndShowAdchivement, CreateAndShowAdchivement>();
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<ISavDelJSONModel, SavDelJSONModel>();

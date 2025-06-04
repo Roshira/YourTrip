@@ -135,6 +135,7 @@ namespace YourTrips.Web.Controllers
             {
                 user.Email,
                 user.UserName,
+                
             });
         }
     }

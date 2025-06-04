@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using YourTrips.Core.Entities.Saved;
 using static System.Net.WebRequestMethods;
@@ -12,6 +13,7 @@ namespace YourTrips.Core.Entities
     {
         public int Id { get; set; }
         public Guid UserId { get; set; }
+        [JsonIgnore]
         public User User { get; set; }  // Зв'язок з користувачем
 
         public string Name { get; set; }  // Назва маршруту (опціонально)

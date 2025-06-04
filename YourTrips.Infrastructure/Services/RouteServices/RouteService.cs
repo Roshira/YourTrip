@@ -74,16 +74,20 @@ namespace YourTrips.Infrastructure.Services.Routes
                 _mapper.Map<List<RouteDto>>(routes));
         }
 
-
         public async Task<ResultDto> UpdateImageAsync(string imageUrl, int routeId)
         {
             var route = await _context.Routes.FindAsync(routeId);
             if (route == null)
                 return ResultDto.Fail("Маршрут не знайдено");
-            route.ImageUrl = imageUrl;
-            return ResultDto<RouteDto>.Success("Success");
-        }
 
+            route.ImageUrl = imageUrl;
+            await _context.SaveChangesAsync();  // Save changes to database
+
+            // Assuming you have a method to map Route to RouteDto
+            var routeDto = _mapper.Map<RouteDto>(route);  // Or manual mapping
+
+            return ResultDto<RouteDto>.Success(routeDto);
+        }
         public async Task<ShowRouteDto> ShowRouteAsync(int routeId)
         {
             var route = await _context.Routes
@@ -98,6 +102,7 @@ namespace YourTrips.Infrastructure.Services.Routes
 
             savedList.AddRange(route.SavedHotels.Select(h => new SavedDto
             {
+                Id = h.Id,
                 RouteId = h.RouteId,
                 Json = h.HotelJson,
                 Type = "Hotel"
@@ -106,6 +111,7 @@ namespace YourTrips.Infrastructure.Services.Routes
 
             savedList.AddRange(route.SavedFlights.Select(f => new SavedDto
             {
+                Id= f.Id,
                 RouteId = f.RouteId,
                 Json = f.FlightsJson,
                 Type = "Flight"
@@ -113,7 +119,7 @@ namespace YourTrips.Infrastructure.Services.Routes
 
             savedList.AddRange(route.SavedPlaces.Select(f => new SavedDto
             {
-                
+                Id = f.Id,
                 RouteId = f.RouteId,
                 Json = f.PlaceJson,
                 Type = "Place"

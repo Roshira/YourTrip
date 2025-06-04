@@ -24,6 +24,48 @@ builder.Services
 
 // Build the application
 var app = builder.Build();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    try
+//    {
+//        var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+//        var userManager = services.GetRequiredService<UserManager<User>>();
+
+//        // Створення ролі Admin (якщо її ще немає)
+//        if (!await roleManager.RoleExistsAsync("Admin"))
+//        {
+//            await roleManager.CreateAsync(new IdentityRole<Guid>("Admin"));
+//        }
+
+//        // Створення адміністратора (якщо він ще не існує)
+//        var adminEmail = "roshira@ukt.net";
+//        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+
+//        if (adminUser == null)
+//        {
+//            adminUser = new User
+//            {
+//                UserName = adminEmail,
+//                Email = adminEmail,
+//                EmailConfirmed = true // Якщо ви використовуєте підтвердження email
+//            };
+
+//            var createResult = await userManager.CreateAsync(adminUser, "SecurePassword123!");
+
+//            if (createResult.Succeeded)
+//            {
+//                await userManager.AddToRoleAsync(adminUser, "Admin");
+//            }
+//        }
+//    }
+//    catch (Exception ex)
+//    {
+//        var logger = services.GetRequiredService<ILogger<Program>>();
+//        logger.LogError(ex, "Помилка при створенні ролей або адміністратора");
+//    }
+//}
 
 // --- HTTP Request Processing Pipeline (Middleware Pipeline) ---
 // The order of middleware registration is CRUCIAL!

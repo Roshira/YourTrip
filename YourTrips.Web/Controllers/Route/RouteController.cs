@@ -4,8 +4,11 @@ using System;
 using System.Threading.Tasks;
 using YourTrips.Application.Interfaces;
 using YourTrips.Core.DTOs.Route.PartRoutes;
+using YourTrips.Core.Entities.Achievement;
+using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Routes;
 using YourTrips.Web.Extensions;
+using YourTrips.Core.Interfaces.Achievements;
 
 namespace YourTrips.Web.Controllers.Route
 {
@@ -16,17 +19,19 @@ namespace YourTrips.Web.Controllers.Route
     {
         private readonly IRouteService _routeService;
 
-        public RouteController(IRouteService routeService)
+        private readonly ICreateAndShowAdchivement _achievements;
+        public RouteController(IRouteService routeService, ICreateAndShowAdchivement achievement)
         {
             _routeService = routeService;
+            _achievements = achievement;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateRouteDto dto)
         {
-            var UserId = User.GetUserId();
+            var userId = User.GetUserId();
 
-            var result = await _routeService.CreateRouteAsync(dto, UserId);
+            var result = await _routeService.CreateRouteAsync(dto, userId);
             return result.ToApiResponse();
         }
 
@@ -34,6 +39,8 @@ namespace YourTrips.Web.Controllers.Route
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _routeService.DeleteRouteAsync(id);
+            var userId = User.GetUserId();
+            await _achievements.CheckAchievementAsync(userId);
             return result.ToApiResponse();
         }
 

@@ -2,7 +2,10 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using YourTrips.Core.DTOs.Route;
+using YourTrips.Core.Entities.Achievement;
+using YourTrips.Core.Interfaces.Achievements;
 using YourTrips.Core.Interfaces.Routes.Saved;
+using YourTrips.Web.Extensions;
 
 namespace YourTrips.Web.Controllers.Route
 {
@@ -12,9 +15,10 @@ namespace YourTrips.Web.Controllers.Route
     public class ReviewController : ControllerBase
     {
         private readonly IReviewService _reviewService;
-
-        public ReviewController(IReviewService review)
+        private readonly ICreateAndShowAdchivement _achievements;
+        public ReviewController(IReviewService review, ICreateAndShowAdchivement achievements)
         {
+            _achievements = achievements;
             _reviewService = review;
         }
 
@@ -25,7 +29,8 @@ namespace YourTrips.Web.Controllers.Route
 
             if (!result.IsSuccess)
                 return BadRequest(result.Message);
-
+            var userId = User.GetUserId();
+            await _achievements.CheckAchievementAsync(userId);
             return Ok(result);
         }
 

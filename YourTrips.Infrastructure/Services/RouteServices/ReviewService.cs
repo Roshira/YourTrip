@@ -9,6 +9,8 @@ using YourTrips.Core.Interfaces;
 using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.RateLimiting;
+using YourTrips.Core.Interfaces.Achievements;
 
 namespace YourTrips.Infrastructure.Services.RouteServices
 {
@@ -18,6 +20,7 @@ namespace YourTrips.Infrastructure.Services.RouteServices
 
         public ReviewService(YourTripsDbContext context)
         {
+          
             _context = context;
         }
 
@@ -34,7 +37,6 @@ namespace YourTrips.Infrastructure.Services.RouteServices
             route.IsCompleted = true;
 
             await _context.SaveChangesAsync();
-
             return ResultDto.Success("Review submitted and route marked as completed.");
         }
     }
