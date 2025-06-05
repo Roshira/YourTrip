@@ -8,7 +8,7 @@ using YourTrips.Core.Entities;
 using YourTrips.Infrastructure.Data;
 using YourTrips.Infrastructure.Services.Admin.Data;
 
-namespace YourTrips.Tests.Services
+namespace YourTrips.Test.Services.Admin
 {
     [TestFixture]
     public class UserSortingServiceTests
