@@ -1,0 +1,4 @@
+var class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_google_place_details_response =
+[
+    [ "Result", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_google_place_details_response.html#aa1e61200c622af0af0efad8cf49b899f", null ]
+];

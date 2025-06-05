@@ -1,0 +1,26 @@
+var dir_1fae610651d7fbd1d16d64522d703fcc =
+[
+    [ "20250501111916_InitialCreate.cs", "20250501111916___initial_create_8cs.html", "20250501111916___initial_create_8cs" ],
+    [ "20250501111916_InitialCreate.Designer.cs", "20250501111916___initial_create_8_designer_8cs.html", "20250501111916___initial_create_8_designer_8cs" ],
+    [ "20250506091707_MakeIconUrlNullable.cs", "20250506091707___make_icon_url_nullable_8cs.html", "20250506091707___make_icon_url_nullable_8cs" ],
+    [ "20250506091707_MakeIconUrlNullable.Designer.cs", "20250506091707___make_icon_url_nullable_8_designer_8cs.html", "20250506091707___make_icon_url_nullable_8_designer_8cs" ],
+    [ "20250508135415_RemoveUniqueUserNameIndex.cs", "20250508135415___remove_unique_user_name_index_8cs.html", "20250508135415___remove_unique_user_name_index_8cs" ],
+    [ "20250508135415_RemoveUniqueUserNameIndex.Designer.cs", "20250508135415___remove_unique_user_name_index_8_designer_8cs.html", "20250508135415___remove_unique_user_name_index_8_designer_8cs" ],
+    [ "20250513095041_deleteIconURL.cs", "20250513095041__delete_icon_u_r_l_8cs.html", "20250513095041__delete_icon_u_r_l_8cs" ],
+    [ "20250513095041_deleteIconURL.Designer.cs", "20250513095041__delete_icon_u_r_l_8_designer_8cs.html", "20250513095041__delete_icon_u_r_l_8_designer_8cs" ],
+    [ "20250520210741_AddSomething.cs", "20250520210741___add_something_8cs.html", "20250520210741___add_something_8cs" ],
+    [ "20250520210741_AddSomething.Designer.cs", "20250520210741___add_something_8_designer_8cs.html", "20250520210741___add_something_8_designer_8cs" ],
+    [ "20250529141800_AddRouteEntity.cs", "20250529141800___add_route_entity_8cs.html", "20250529141800___add_route_entity_8cs" ],
+    [ "20250529141800_AddRouteEntity.Designer.cs", "20250529141800___add_route_entity_8_designer_8cs.html", "20250529141800___add_route_entity_8_designer_8cs" ],
+    [ "20250529145656_AddRouteEntityCanBeNull.cs", "20250529145656___add_route_entity_can_be_null_8cs.html", "20250529145656___add_route_entity_can_be_null_8cs" ],
+    [ "20250529145656_AddRouteEntityCanBeNull.Designer.cs", "20250529145656___add_route_entity_can_be_null_8_designer_8cs.html", "20250529145656___add_route_entity_can_be_null_8_designer_8cs" ],
+    [ "20250530091517_AddRouteImageUrl.cs", "20250530091517___add_route_image_url_8cs.html", "20250530091517___add_route_image_url_8cs" ],
+    [ "20250530091517_AddRouteImageUrl.Designer.cs", "20250530091517___add_route_image_url_8_designer_8cs.html", "20250530091517___add_route_image_url_8_designer_8cs" ],
+    [ "20250530120900_DeleteRow.cs", "20250530120900___delete_row_8cs.html", "20250530120900___delete_row_8cs" ],
+    [ "20250530120900_DeleteRow.Designer.cs", "20250530120900___delete_row_8_designer_8cs.html", "20250530120900___delete_row_8_designer_8cs" ],
+    [ "20250530121004_AddImageUrl.cs", "20250530121004___add_image_url_8cs.html", "20250530121004___add_image_url_8cs" ],
+    [ "20250530121004_AddImageUrl.Designer.cs", "20250530121004___add_image_url_8_designer_8cs.html", "20250530121004___add_image_url_8_designer_8cs" ],
+    [ "20250601094533_JsonPlace.cs", "20250601094533___json_place_8cs.html", "20250601094533___json_place_8cs" ],
+    [ "20250601094533_JsonPlace.Designer.cs", "20250601094533___json_place_8_designer_8cs.html", "20250601094533___json_place_8_designer_8cs" ],
+    [ "YourTripsDbContextModelSnapshot.cs", "_your_trips_db_context_model_snapshot_8cs.html", "_your_trips_db_context_model_snapshot_8cs" ]
+];

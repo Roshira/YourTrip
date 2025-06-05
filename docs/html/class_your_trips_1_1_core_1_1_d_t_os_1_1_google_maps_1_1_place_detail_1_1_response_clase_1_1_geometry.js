@@ -1,0 +1,4 @@
+var class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_geometry =
+[
+    [ "Location", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_geometry.html#a6f824bd0f31fad6e2cf5326dceac39cc", null ]
+];

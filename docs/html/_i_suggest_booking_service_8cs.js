@@ -1,0 +1,4 @@
+var _i_suggest_booking_service_8cs =
+[
+    [ "YourTrips.Application.Interfaces.RapidBooking.ISuggestBookingService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_suggest_booking_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_suggest_booking_service" ]
+];

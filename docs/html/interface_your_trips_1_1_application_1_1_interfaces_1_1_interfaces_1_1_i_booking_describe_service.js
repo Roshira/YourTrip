@@ -1,0 +1,4 @@
+var interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service =
+[
+    [ "DescribeHotelAsync", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service.html#ac58207ef7b497ccdfe0fe7eb22910bb0", null ]
+];

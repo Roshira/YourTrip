@@ -1,0 +1,4 @@
+var 20250508135415___remove_unique_user_name_index_8_designer_8cs =
+[
+    [ "YourTrips.Infrastructure.Migrations.RemoveUniqueUserNameIndex", "class_your_trips_1_1_infrastructure_1_1_migrations_1_1_remove_unique_user_name_index.html", "class_your_trips_1_1_infrastructure_1_1_migrations_1_1_remove_unique_user_name_index" ]
+];

@@ -1,0 +1,4 @@
+var interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_suggest_booking_service =
+[
+    [ "GetSuggestionsAsync", "interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_suggest_booking_service.html#a152adf148a40e87c1aeae6d58f06c8d8", null ]
+];

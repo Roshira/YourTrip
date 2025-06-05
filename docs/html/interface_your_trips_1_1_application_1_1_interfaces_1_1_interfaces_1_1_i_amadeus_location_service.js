@@ -1,0 +1,5 @@
+var interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service =
+[
+    [ "GetCityNameFromIataCodeAsync", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service.html#acfd5977f8826bb0e0daf576702df942b", null ],
+    [ "GetIataCodeFromCityNameAsync", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service.html#a993783b499b96ab49c9ac05eec78f0aa", null ]
+];

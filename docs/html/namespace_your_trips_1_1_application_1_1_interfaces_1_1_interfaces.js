@@ -1,0 +1,8 @@
+var namespace_your_trips_1_1_application_1_1_interfaces_1_1_interfaces =
+[
+    [ "IAmadeusAuthService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_auth_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_auth_service" ],
+    [ "IAmadeusLocationService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service" ],
+    [ "IBookingApiService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_api_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_api_service" ],
+    [ "IBookingDescribeService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service" ],
+    [ "IFlightSearchService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_flight_search_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_flight_search_service" ]
+];

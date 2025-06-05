@@ -1,0 +1,5 @@
+var class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_opening_hours =
+[
+    [ "Open_Now", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_opening_hours.html#a655e8d89339134efe11b680759f8d004", null ],
+    [ "Weekday_Text", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_opening_hours.html#a18f96e36c0a2b2e0ab37f77536a6d912", null ]
+];

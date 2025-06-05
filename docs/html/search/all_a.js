@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['hoteldescribe_0',['HotelDescribe',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_purt_dto.html#a376312c762941356a6074a73cd917dc2',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelDescribePurtDto']]],
+  ['hoteldescribepurtdto_1',['HotelDescribePurtDto',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_purt_dto.html',1,'YourTrips::Core::DTOs::RapidBooking::Describe']]],
+  ['hoteldescribepurtdto_2ecs_2',['HotelDescribePurtDto.cs',['../_hotel_describe_purt_dto_8cs.html',1,'']]],
+  ['hoteldescriberesultdto_3',['HotelDescribeResultDto',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_result_dto.html',1,'YourTrips::Core::DTOs::RapidBooking::Describe']]],
+  ['hoteldescriberesultdto_2ecs_4',['HotelDescribeResultDto.cs',['../_hotel_describe_result_dto_8cs.html',1,'']]],
+  ['hoteldescriptions_5',['HotelDescriptions',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_result_dto.html#acf1071cf80dd7c1674e83fd540e1855c',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelDescribeResultDto']]],
+  ['hotelid_6',['HotelId',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_additional_d_t_o_1_1_booking_hotel_result.html#a6dfc60302b1ae41e940d95d2fa83f052',1,'YourTrips.Core.DTOs.RapidBooking.AdditionalDTO.BookingHotelResult.HotelId'],['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_purt_dto.html#a1c9ba3776025f14893a79d294547232e',1,'YourTrips.Core.DTOs.RapidBooking.Describe.HotelDescribePurtDto.HotelId'],['../class_hotel_result_dto.html#ad3a9750c332ca45e28610fac5646365f',1,'HotelResultDto.HotelId']]],
+  ['hotelid1_7',['HotelId1',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html#a9a12079482a30482490f76cb7828cf24',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelSearchDescribeDto']]],
+  ['hotelid2_8',['HotelId2',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html#a0ca0d61586e553649e2aa4eb979ccf51',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelSearchDescribeDto']]],
+  ['hotelid3_9',['HotelId3',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html#af8360741a9b38dd70a1933934abaafc2',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelSearchDescribeDto']]],
+  ['hotelid4_10',['HotelId4',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html#a207c9302835408e7979e0ef717b28aba',1,'YourTrips::Core::DTOs::RapidBooking::Describe::HotelSearchDescribeDto']]],
+  ['hoteljson_11',['HotelJson',['../class_your_trips_1_1_core_1_1_entities_1_1_saved_1_1_saved_hotel.html#a84f9f625dfe747037fb2ee69226534fd',1,'YourTrips::Core::Entities::Saved::SavedHotel']]],
+  ['hotelname_12',['HotelName',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_additional_d_t_o_1_1_booking_hotel_result.html#a5e103e940a034c619006abfa9cd92234',1,'YourTrips.Core.DTOs.RapidBooking.AdditionalDTO.BookingHotelResult.HotelName'],['../class_hotel_result_dto.html#a4e00d61bb937cdb0e79db14ba06e7d26',1,'HotelResultDto.HotelName'],['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_hotel_search_request_dto.html#aa5171d28b3a2e764d563cbe90ac40abd',1,'YourTrips.Core.DTOs.RapidBooking.HotelSearchRequestDto.HotelName'],['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_hotel_suggestion_dto.html#a08761164a56a3d259c63fc579af8d71b',1,'YourTrips.Core.DTOs.RapidBooking.HotelSuggestionDto.HotelName']]],
+  ['hotelresultdto_13',['HotelResultDto',['../class_hotel_result_dto.html',1,'']]],
+  ['hotelresultdto_2ecs_14',['HotelResultDto.cs',['../_hotel_result_dto_8cs.html',1,'']]],
+  ['hotelsearchcontroller_15',['HotelSearchController',['../class_hotel_search_controller.html',1,'HotelSearchController'],['../class_hotel_search_controller.html#a57898a7508b52a7b8ee327e7992bf4e3',1,'HotelSearchController.HotelSearchController()']]],
+  ['hotelsearchcontroller_2ecs_16',['HotelSearchController.cs',['../_hotel_search_controller_8cs.html',1,'']]],
+  ['hotelsearchdescribedto_17',['HotelSearchDescribeDto',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html',1,'YourTrips::Core::DTOs::RapidBooking::Describe']]],
+  ['hotelsearchdescribedto_2ecs_18',['HotelSearchDescribeDto.cs',['../_hotel_search_describe_dto_8cs.html',1,'']]],
+  ['hotelsearchrequestdto_19',['HotelSearchRequestDto',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_hotel_search_request_dto.html',1,'YourTrips::Core::DTOs::RapidBooking']]],
+  ['hotelsearchrequestdto_2ecs_20',['HotelSearchRequestDto.cs',['../_hotel_search_request_dto_8cs.html',1,'']]],
+  ['hotelsuggestiondto_21',['HotelSuggestionDto',['../class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_hotel_suggestion_dto.html',1,'YourTrips::Core::DTOs::RapidBooking']]],
+  ['hotelsuggestiondto_2ecs_22',['HotelSuggestionDto.cs',['../_hotel_suggestion_dto_8cs.html',1,'']]]
+];

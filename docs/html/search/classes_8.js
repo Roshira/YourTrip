@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['iamadeusauthservice_0',['IAmadeusAuthService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_auth_service.html',1,'YourTrips::Application::Interfaces::Interfaces']]],
+  ['iamadeuslocationservice_1',['IAmadeusLocationService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_amadeus_location_service.html',1,'YourTrips::Application::Interfaces::Interfaces']]],
+  ['iappemailsender_2',['IAppEmailSender',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_i_app_email_sender.html',1,'YourTrips::Application::Interfaces']]],
+  ['iauthservice_3',['IAuthService',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_i_auth_service.html',1,'YourTrips::Core::Interfaces']]],
+  ['ibookingapiservice_4',['IBookingApiService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_api_service.html',1,'YourTrips::Application::Interfaces::Interfaces']]],
+  ['ibookingdescribeservice_5',['IBookingDescribeService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service.html',1,'YourTrips::Application::Interfaces::Interfaces']]],
+  ['icreateandshowadchivement_6',['ICreateAndShowAdchivement',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_achievements_1_1_i_create_and_show_adchivement.html',1,'YourTrips::Core::Interfaces::Achievements']]],
+  ['iflightsearchservice_7',['IFlightSearchService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_flight_search_service.html',1,'YourTrips::Application::Interfaces::Interfaces']]],
+  ['igoogleplacesservice_8',['IGooglePlacesService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_google_maps_1_1_i_google_places_service.html',1,'YourTrips::Application::Interfaces::GoogleMaps']]],
+  ['initialcreate_9',['InitialCreate',['../class_your_trips_1_1_infrastructure_1_1_migrations_1_1_initial_create.html',1,'YourTrips::Infrastructure::Migrations']]],
+  ['iparisrestaurants_10',['IParisRestaurants',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_admin_1_1_i_paris_restaurants.html',1,'YourTrips::Core::Interfaces::Admin']]],
+  ['irestaurantsorter_11',['IRestaurantSorter',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_admin_1_1_i_restaurant_sorter.html',1,'YourTrips::Core::Interfaces::Admin']]],
+  ['ireviewservice_12',['IReviewService',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_review_service.html',1,'YourTrips::Core::Interfaces::Routes::Saved']]],
+  ['irewriteusername_13',['IRewriteUserName',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_i_rewrite_user_name.html',1,'YourTrips::Core::Interfaces']]],
+  ['irouteservice_14',['IRouteService',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_i_route_service.html',1,'YourTrips::Core::Interfaces::Routes']]],
+  ['isavdeljsonmodel_15',['ISavDelJSONModel',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_sav_del_j_s_o_n_model.html',1,'YourTrips::Core::Interfaces::Routes::Saved']]],
+  ['isavedentity_16',['ISavedEntity',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_saved_entity.html',1,'YourTrips::Core::Interfaces::Routes::Saved']]],
+  ['isavedhotels_17',['ISavedHotels',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_saved_hotels.html',1,'YourTrips::Application::Interfaces::RapidBooking']]],
+  ['isuggestamadeusservice_18',['ISuggestAmadeusService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_amadeus_1_1_i_suggest_amadeus_service.html',1,'YourTrips::Application::Interfaces::Amadeus']]],
+  ['isuggestbookingservice_19',['ISuggestBookingService',['../interface_your_trips_1_1_application_1_1_interfaces_1_1_rapid_booking_1_1_i_suggest_booking_service.html',1,'YourTrips::Application::Interfaces::RapidBooking']]],
+  ['itinerary_20',['Itinerary',['../class_your_trips_1_1_application_1_1_amadeus_1_1_models_1_1_flight_1_1_itinerary.html',1,'YourTrips::Application::Amadeus::Models::Flight']]],
+  ['iusersortingservice_21',['IUserSortingService',['../interface_your_trips_1_1_core_1_1_interfaces_1_1_admin_1_1_i_user_sorting_service.html',1,'YourTrips::Core::Interfaces::Admin']]]
+];

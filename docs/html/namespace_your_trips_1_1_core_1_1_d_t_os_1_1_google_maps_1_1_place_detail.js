@@ -1,0 +1,7 @@
+var namespace_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail =
+[
+    [ "ResponseClase", "namespace_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase.html", "namespace_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase" ],
+    [ "GooglePlaceDetailsResponse", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_google_place_details_response.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_google_place_details_response" ],
+    [ "PlaceDetailsDto", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_place_details_dto.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_place_details_dto" ],
+    [ "ReviewDto", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_review_dto.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_review_dto" ]
+];

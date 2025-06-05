@@ -1,0 +1,6 @@
+var namespace_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe =
+[
+    [ "HotelDescribePurtDto", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_purt_dto.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_purt_dto" ],
+    [ "HotelDescribeResultDto", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_result_dto.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_describe_result_dto" ],
+    [ "HotelSearchDescribeDto", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto.html", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_describe_1_1_hotel_search_describe_dto" ]
+];

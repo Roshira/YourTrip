@@ -1,0 +1,4 @@
+var _sav_del_j_s_o_n_model_8cs =
+[
+    [ "YourTrips.Infrastructure.Services.RouteServices.SavedServices.SavDelJSONModel", "class_your_trips_1_1_infrastructure_1_1_services_1_1_route_services_1_1_saved_services_1_1_sav_del_j_s_o_n_model.html", "class_your_trips_1_1_infrastructure_1_1_services_1_1_route_services_1_1_saved_services_1_1_sav_del_j_s_o_n_model" ]
+];

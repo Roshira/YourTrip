@@ -1,0 +1,4 @@
+var interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_api_service =
+[
+    [ "SearchHotelsAsync", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_api_service.html#a90efaf5db685c5df510d3be97ee908ac", null ]
+];

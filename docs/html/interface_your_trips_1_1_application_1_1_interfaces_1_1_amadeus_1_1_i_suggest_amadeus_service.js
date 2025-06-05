@@ -1,0 +1,4 @@
+var interface_your_trips_1_1_application_1_1_interfaces_1_1_amadeus_1_1_i_suggest_amadeus_service =
+[
+    [ "GetLocationSuggestions", "interface_your_trips_1_1_application_1_1_interfaces_1_1_amadeus_1_1_i_suggest_amadeus_service.html#aa712b29226cc2af1984d67b6018324ee", null ]
+];

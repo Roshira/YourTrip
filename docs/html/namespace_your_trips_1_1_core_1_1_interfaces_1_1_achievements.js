@@ -1,0 +1,4 @@
+var namespace_your_trips_1_1_core_1_1_interfaces_1_1_achievements =
+[
+    [ "ICreateAndShowAdchivement", "interface_your_trips_1_1_core_1_1_interfaces_1_1_achievements_1_1_i_create_and_show_adchivement.html", "interface_your_trips_1_1_core_1_1_interfaces_1_1_achievements_1_1_i_create_and_show_adchivement" ]
+];

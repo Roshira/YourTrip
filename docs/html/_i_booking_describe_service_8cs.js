@@ -1,0 +1,4 @@
+var _i_booking_describe_service_8cs =
+[
+    [ "YourTrips.Application.Interfaces.Interfaces.IBookingDescribeService", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service.html", "interface_your_trips_1_1_application_1_1_interfaces_1_1_interfaces_1_1_i_booking_describe_service" ]
+];

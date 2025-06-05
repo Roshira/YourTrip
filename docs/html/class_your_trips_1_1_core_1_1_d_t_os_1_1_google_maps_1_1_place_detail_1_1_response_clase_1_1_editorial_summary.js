@@ -1,0 +1,4 @@
+var class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_editorial_summary =
+[
+    [ "Overview", "class_your_trips_1_1_core_1_1_d_t_os_1_1_google_maps_1_1_place_detail_1_1_response_clase_1_1_editorial_summary.html#aa603ef8cdcf537200d7a5f6959abcbdc", null ]
+];

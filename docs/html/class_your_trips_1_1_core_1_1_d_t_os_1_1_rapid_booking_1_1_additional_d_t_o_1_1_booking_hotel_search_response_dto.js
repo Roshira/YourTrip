@@ -1,0 +1,4 @@
+var class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_additional_d_t_o_1_1_booking_hotel_search_response_dto =
+[
+    [ "Result", "class_your_trips_1_1_core_1_1_d_t_os_1_1_rapid_booking_1_1_additional_d_t_o_1_1_booking_hotel_search_response_dto.html#ab0be4dcc670e3c2a504948ebc6e3aad2", null ]
+];

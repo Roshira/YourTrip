@@ -1,0 +1,6 @@
+var namespace_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved =
+[
+    [ "IReviewService", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_review_service.html", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_review_service" ],
+    [ "ISavDelJSONModel", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_sav_del_j_s_o_n_model.html", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_sav_del_j_s_o_n_model" ],
+    [ "ISavedEntity", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_saved_entity.html", "interface_your_trips_1_1_core_1_1_interfaces_1_1_routes_1_1_saved_1_1_i_saved_entity" ]
+];
