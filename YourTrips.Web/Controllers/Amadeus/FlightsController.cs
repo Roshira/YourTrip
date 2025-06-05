@@ -13,7 +13,9 @@ using YourTrips.Core.Entities.Saved;
 using YourTrips.Core.Interfaces.Routes.Saved;
 
 namespace YourTrips.Web.Controllers;
-
+/// <summary>
+/// Controller get different information about flights tikets
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class FlightsController : ControllerBase
@@ -21,13 +23,17 @@ public class FlightsController : ControllerBase
     private readonly IFlightSearchService _flightSearchService;
     private readonly ISuggestAmadeusService _suggestListService;
 
-
+    /// <summary>
+    /// we use DI for this
+    /// </summary>
     public FlightsController(IFlightSearchService flightSearchService, ISuggestAmadeusService suggestListService)
     {
         _flightSearchService = flightSearchService;
         _suggestListService = suggestListService;
-   
-    }
+
+    } /// <summary>
+      /// when user click button search he get diffetent tickets
+      /// </summary>
 
     [HttpPost("search")]
     [AllowAnonymous]
@@ -47,7 +53,9 @@ public class FlightsController : ControllerBase
             return StatusCode(500, $"Error accessing Amadeus API: {ex.Message}");
         }
     }
-
+    /// <summary>
+    /// it is for text
+    /// </summary>
     [HttpGet("SuggestList")]
     public async Task<IActionResult> SuggestList(string text)
     {

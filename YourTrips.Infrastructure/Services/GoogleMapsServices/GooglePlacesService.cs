@@ -13,17 +13,31 @@ using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail;
 
 namespace YourTrips.Infrastructure.Services.GoogleMapsServices
 {
+    /// <summary>
+    /// Service for interacting with Google Places API.
+    /// Provides methods for retrieving place search results and detailed place information.
+    /// </summary>
     public class GooglePlacesService : IGooglePlacesService
     {
         private readonly HttpClient _httpClient;
         private readonly string _apiKey;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GooglePlacesService"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client instance used to send requests.</param>
+        /// <param name="configuration">Application configuration for retrieving the API key.</param>
         public GooglePlacesService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _apiKey = configuration["GoogleMaps:ApiKey"]; // в appsettings.json
+            _apiKey = configuration["GoogleMaps:ApiKey"]; // Stored in appsettings.json
         }
 
+        /// <summary>
+        /// Retrieves detailed information about a place by its Google Place ID.
+        /// </summary>
+        /// <param name="placeId">The unique identifier of the place.</param>
+        /// <returns>A <see cref="PlaceDetailsDto"/> object with detailed information about the place.</returns>
         public async Task<PlaceDetailsDto> GetFullPlaceDetailsAsync(string placeId)
         {
             var url = $"https://maps.googleapis.com/maps/api/place/details/json" +
@@ -36,12 +50,9 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
 
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
-            Console.WriteLine($"JSON RESPONCE: {response}");
+
             var json = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"JSON PLACES: {json}");
             var details = JsonConvert.DeserializeObject<GooglePlaceDetailsResponse>(json);
-
-
             var r = details?.Result;
 
             return new PlaceDetailsDto
@@ -70,10 +81,14 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
                 Url = r?.Url,
                 BusinessStatus = r?.Business_Status,
                 Summary = r?.Editorial_Summary?.Overview
-                
             };
         }
 
+        /// <summary>
+        /// Searches for places based on the provided location name.
+        /// </summary>
+        /// <param name="locationName">The name of the location to search for.</param>
+        /// <returns>A list of <see cref="PlaceSearchResultDto"/> representing the search results.</returns>
         public async Task<List<PlaceSearchResultDto>> GetPlacesInfoAsync(string locationName)
         {
             var allResults = new List<PlaceSearchResultDto>();
@@ -85,7 +100,7 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
 
             var json = await response.Content.ReadAsStringAsync();
             dynamic result = JsonConvert.DeserializeObject(json);
-            
+
             foreach (var item in result.results)
             {
                 string photoUrl = null;
@@ -108,5 +123,4 @@ namespace YourTrips.Infrastructure.Services.GoogleMapsServices
             return allResults;
         }
     }
-
 }

@@ -7,6 +7,9 @@ using YourTrips.Core.DTOs.Auth;
 
 namespace YourTrips.Core.Interfaces
 {
+    /// <summary>
+    /// Interface register
+    /// </summary>
     public interface IAuthService
     {
         Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto);

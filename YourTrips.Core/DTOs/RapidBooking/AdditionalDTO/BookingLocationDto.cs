@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.RapidBooking.AdditionalDTO
 {
+    /// <summary>
+    /// it is just location
+    /// </summary>
     public class BookingLocationDto
     {
         [JsonPropertyName("dest_id")]

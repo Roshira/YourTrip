@@ -7,6 +7,9 @@ using YourTrips.Core.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Core.DTOs.Amadeus
 {
+    /// <summary>
+    /// for search flights
+    /// </summary>
     public class FlightSearchRequestDto
     {
         public string Origin { get; set; }

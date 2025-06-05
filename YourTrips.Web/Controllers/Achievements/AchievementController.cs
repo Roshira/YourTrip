@@ -5,6 +5,9 @@ using YourTrips.Web.Extensions;
 
 namespace YourTrips.Web.Controllers.Achievements
 {
+    /// <summary>
+    /// This controller work with achievements
+    /// </summary>
     [ApiController]
     [Authorize]
     [Route("api/[controller]")]
@@ -16,7 +19,10 @@ namespace YourTrips.Web.Controllers.Achievements
         {
             _achievementService = achievementService;
         }
-
+        /// <summary>
+        /// this show your chievements
+        /// </summary>
+        /// <returns>you get Dto with photoUrl, describe, name</returns>
         [HttpGet("show")]
         public async Task<IActionResult> GetUserAchievements()
         {

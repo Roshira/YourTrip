@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Application.Interfaces
 {
+    /// <summary>
+    /// this interface for aplly email
+    /// </summary>
     public interface IAppEmailSender
     {
          Task SendEmailAsync(string email, string subject, string htmlMessage);

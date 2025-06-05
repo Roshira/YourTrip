@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.RapidBooking.Describe
 {
+    /// <summary>
+    /// More detal
+    /// </summary>
     public class HotelDescribePurtDto
     {
         public string HotelId { get; set; }

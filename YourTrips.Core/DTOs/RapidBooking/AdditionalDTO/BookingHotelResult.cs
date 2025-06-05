@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.RapidBooking.AdditionalDTO
 {
-
+    /// <summary>
+    /// It it result with get frontend and we read
+    /// </summary>
     public class BookingHotelResult
     {
         [JsonPropertyName("hotel_id")]

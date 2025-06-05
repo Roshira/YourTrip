@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.Achievenent
 {
+    /// <summary>
+    /// Just achievement DTO
+    /// </summary>
     public class AchievementDto
     {
         public int Id { get; set; }

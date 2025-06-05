@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.RapidBooking.AdditionalDTO
 {
+    /// <summary>
+    /// this class was create for list
+    /// </summary>
     public class BookingHotelSearchResponseDto
     {
         [JsonPropertyName("result")]

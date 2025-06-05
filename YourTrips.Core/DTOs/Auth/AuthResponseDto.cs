@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.Auth
 {
+    /// <summary>
+    /// Auth response dto
+    /// </summary>
     public class AuthResponseDto
     {
         public bool IsSuccess { get; set; }

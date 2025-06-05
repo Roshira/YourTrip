@@ -11,15 +11,27 @@ using YourTrips.Infrastructure.Data;
 
 namespace YourTrips.Infrastructure.Services.Admin.Data
 {
+    /// <summary>
+    /// Service for comparing sequential and parallel sorting methods based on the number of routes per user.
+    /// </summary>
     public class UserSortingService : IUserSortingService
     {
         private readonly YourTripsDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserSortingService"/> class.
+        /// </summary>
+        /// <param name="context">The database context used to retrieve users and their routes.</param>
         public UserSortingService(YourTripsDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Compares the execution time and results of sequential and parallel merge sort algorithms
+        /// for sorting users by their number of routes.
+        /// </summary>
+        /// <returns>A <see cref="SortingComparisonResult"/> containing the results of both sorting methods.</returns>
         public async Task<SortingComparisonResult> CompareSortingMethods()
         {
             var users = await _context.Users
@@ -36,6 +48,11 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             return result;
         }
 
+        /// <summary>
+        /// Performs a sequential merge sort on the user list based on route count.
+        /// </summary>
+        /// <param name="users">The list of users to sort.</param>
+        /// <returns>A <see cref="SortingResult"/> containing sorted users and execution time.</returns>
         private Task<SortingResult> SortSequential(List<User> users)
         {
             var stopwatch = Stopwatch.StartNew();
@@ -60,6 +77,11 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             });
         }
 
+        /// <summary>
+        /// Performs a parallel merge sort on the user list based on route count.
+        /// </summary>
+        /// <param name="users">The list of users to sort.</param>
+        /// <returns>A <see cref="SortingResult"/> containing sorted users and execution time.</returns>
         private async Task<SortingResult> SortParallel(List<User> users)
         {
             var stopwatch = Stopwatch.StartNew();
@@ -83,6 +105,12 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
                 MethodName = "Parallel (MergeSort)"
             };
         }
+
+        /// <summary>
+        /// Recursively sorts a list using the merge sort algorithm.
+        /// </summary>
+        /// <param name="list">The list to sort.</param>
+        /// <returns>The sorted list.</returns>
         private List<UserRoutes> MergeSort(List<UserRoutes> list)
         {
             if (list.Count <= 1) return list;
@@ -94,6 +122,12 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             return Merge(left, right);
         }
 
+        /// <summary>
+        /// Merges two sorted lists into a single sorted list in descending order by RoutesCount.
+        /// </summary>
+        /// <param name="left">The left sorted list.</param>
+        /// <param name="right">The right sorted list.</param>
+        /// <returns>The merged sorted list.</returns>
         private List<UserRoutes> Merge(List<UserRoutes> left, List<UserRoutes> right)
         {
             var result = new List<UserRoutes>();
@@ -112,6 +146,13 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
 
             return result;
         }
+
+        /// <summary>
+        /// Performs a parallel merge sort on a list with a specified threshold.
+        /// </summary>
+        /// <param name="list">The list to sort.</param>
+        /// <param name="threshold">The threshold below which sequential sort is used.</param>
+        /// <returns>The sorted list.</returns>
         private async Task<List<UserRoutes>> ParallelMergeSort(List<UserRoutes> list, int threshold = 1000)
         {
             if (list.Count <= 1)
@@ -128,6 +169,12 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
 
             return Merge(leftTask.Result, rightTask.Result);
         }
+
+        /// <summary>
+        /// Maps a <see cref="User"/> entity to a <see cref="UserDto"/>.
+        /// </summary>
+        /// <param name="user">The user entity to map.</param>
+        /// <returns>The mapped <see cref="UserDto"/>.</returns>
         private UserDto MapToUserDto(User user)
         {
             return new UserDto
@@ -138,5 +185,4 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             };
         }
     }
-  
-    }
+}

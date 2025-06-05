@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.GoogleMaps.PlaceDetail.ResponseClase
 {
-
+    /// <summary>
+    /// It is google place result wich has many part
+    /// </summary>
     public class GooglePlaceResult
     {
         public string Name { get; set; }

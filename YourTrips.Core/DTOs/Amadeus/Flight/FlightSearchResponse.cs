@@ -7,6 +7,9 @@ using YourTrips.Core.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Application.Amadeus.Models.Flight
 {
+    /// <summary>
+    /// This DTO use for search tikets it has a lot of part
+    /// </summary>
     public class FlightSearchResponse
     {
         public List<FlightOffer> Data { get; set; }

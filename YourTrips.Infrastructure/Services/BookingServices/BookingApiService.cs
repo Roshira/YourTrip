@@ -13,20 +13,33 @@ using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Core.DTOs.RapidBooking.AdditionalDTO;
 
 namespace YourTrips.Infrastructure.RapidBooking.Services
-{
+{ 
+    /// <summary>
+  /// Service for interacting with the Booking.com RapidAPI to search for hotels
+  /// </summary>
     public class BookingApiService : IBookingApiService
     {
         private readonly HttpClient _httpClient;
         private readonly string _apiKey;
         private readonly string _apiHost;
-
+        /// <summary>
+        /// Initializes a new instance of the BookingApiService
+        /// </summary>
+        /// <param name="httpClient">HttpClient for making API requests</param>
+        /// <param name="config">Configuration containing API settings</param>
         public BookingApiService(HttpClient httpClient, IConfiguration config)
         {
             _httpClient = httpClient;
             _apiKey = config["RapidBooking:ApiKey"];
             _apiHost = config["RapidBooking:BaseUrl"];
         }
-
+        /// <summary>
+        /// Searches for hotels based on the provided criteria
+        /// </summary>
+        /// <param name="request">DTO containing search parameters (city, dates, guests, etc.)</param>
+        /// <returns>
+        /// Collection of HotelResultDto matching the search criteria,
+        /// or empty collection if no results found or error occurred
         public async Task<IEnumerable<HotelResultDto>> SearchHotelsAsync(HotelSearchRequestDto request)
         {
           
@@ -81,7 +94,6 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
 
             Console.WriteLine($"Використовуємо DestId: {destination.DestId}, DestType: {destination.DestType}");
 
-            // 2. Пошук готелів
             var checkIn = request.CheckInDate.ToString("yyyy-MM-dd");
             var checkOut = request.CheckOutDate.ToString("yyyy-MM-dd");
 
@@ -145,7 +157,6 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
                 return Enumerable.Empty<HotelResultDto>();
             }
 
-            // Фільтрація результатів
             var filteredResults = apiResponse.Result
      .Where(h =>
          (!request.MinPrice.HasValue || (h.PriceBreakdown?.GrossAmount?.Value ?? 0) >= request.MinPrice.Value) &&
@@ -154,7 +165,6 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
           (h.HotelName?.Contains(request.HotelName, StringComparison.OrdinalIgnoreCase) ?? false)))
      .ToList();
 
-            // Мапінг до результатуF
             var result = filteredResults.Select(h => new HotelResultDto
             {
                 HotelId = h.HotelId,
@@ -174,7 +184,10 @@ namespace YourTrips.Infrastructure.RapidBooking.Services
 
             return result;
         }
-
+        /// <summary>
+        /// Adds required headers to the API request
+        /// </summary>
+        /// <param name="request">HttpRequestMessage to modify</param>
         private void AddHeaders(HttpRequestMessage request)
         {
             request.Headers.Add("X-RapidAPI-Key", _apiKey);

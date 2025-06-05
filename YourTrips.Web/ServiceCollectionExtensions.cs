@@ -8,24 +8,31 @@ namespace YourTrips.Web
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds web-related services to the DI container
+        /// Adds web-related services to the dependency injection container.
         /// </summary>
-        /// <param name="services">Service collection</param>
-        /// <param name="configuration">Application configuration</param>
-        /// <returns>Configured service collection</returns>
+        /// <param name="services">The service collection to configure.</param>
+        /// <param name="configuration">The application's configuration.</param>
+        /// <returns>The configured service collection.</returns>
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration configuration)
         {
-            // Add MVC controllers support
+            // Add support for MVC controllers
             services.AddControllers();
 
+            // Register AutoMapper with mapping profile from the Infrastructure layer
             services.AddAutoMapper(typeof(YourTrips.Infrastructure.MappingProfile));
-            // Add API explorer services (required for Swagger)
+
+            // Add support for minimal APIs and Swagger
             services.AddEndpointsApiExplorer();
+
+            // Register IHttpClientFactory
             services.AddHttpClient();
-            // Configure Swagger documentation
+
+            // Configure Swagger/OpenAPI documentation
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "YourTrips API", Version = "v1" });
+
+                // Add Bearer token security definition
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -34,41 +41,40 @@ namespace YourTrips.Web
                     Scheme = "bearer"
                 });
 
+                // Add security requirement for Bearer token
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
                 {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
 
-            // --- CORS Configuration ---
+            // Configure CORS (Cross-Origin Resource Sharing)
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
                 {
-                    // WARNING: AllowAnyOrigin() is NOT recommended for production, especially with cookies!
-                    // Better specify exact frontend domains: .WithOrigins("http://localhost:3000", "https://yourfrontend.com")
-                    // Also requires .AllowCredentials() for cookies to work with cross-domain requests
-                    // If using .AllowCredentials(), you CANNOT use .AllowAnyOrigin()
+                    // WARNING: AllowAnyOrigin() is NOT recommended in production
+                    // Instead, use .WithOrigins() and specify trusted frontend domains
+
                     policy
-                        .WithOrigins("https://localhost:3000",
-                        "https://192.168.0.104:3000") // Replace xxxx with your frontend port
-                        
-                        //    .AllowAnyOrigin() // Temporary for development, or if API is completely public
+                        .WithOrigins(
+                            "https://localhost:3000",
+                            "https://192.168.0.104:3000" // Replace with your actual frontend URLs
+                        )
                         .AllowAnyHeader()
-                         .WithMethods("GET", "POST", "PUT", "DELETE", "PATCH")// Додаємо PATCH
+                        .WithMethods("GET", "POST", "PUT", "DELETE", "PATCH") // Allow PATCH method
                         .AllowAnyMethod()
-                        .AllowCredentials(); // Needed if frontend is on different domain and you're NOT using AllowAnyOrigin
-                    
+                        .AllowCredentials(); // Required if frontend is on a different domain
                 });
             });
 

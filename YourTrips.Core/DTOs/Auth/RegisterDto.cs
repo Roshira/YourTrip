@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.Auth
 {
+    /// <summary>
+    /// This Dto use for register
+    /// </summary>
     public class RegisterDto
     {
         [Required]

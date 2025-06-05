@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.RapidBooking.Describe
 {
+    /// <summary>
+    /// It is that you get
+    /// </summary>
     public class HotelSearchDescribeDto
     {
         public string? HotelId1 { get; set; }

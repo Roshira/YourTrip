@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Core.DTOs.Admin.Data
 {
+    /// <summary>
+    /// We use that get restorant paris and sent on frontend
+    /// </summary>
     public class RestaurantDto
     {
         public string Id { get; set; }
@@ -19,13 +22,18 @@ namespace YourTrips.Core.DTOs.Admin.Data
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
     }
+    /// <summary>
+    /// When restorant open
+    /// </summary>
     public class RestaurantDetailsDto
     {
         public OpeningHoursDto OpeningHours { get; set; }
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
     }
-
+    /// <summary>
+    /// it is part RestaurantDetailsDto
+    /// </summary>
     public class OpeningHoursDto
     {
         public bool OpenNow { get; set; }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace YourTrips.Application.Amadeus.Models
 {
+    /// <summary>
+    /// for auth in amadeus
+    /// </summary>
     public class AuthResponse
     {
         [JsonPropertyName("access_token")]
