@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using YourTrips.Core.DTOs;
-using YourTrips.Core.DTOs.Route;
+using YourTrips.Application.DTOs;
+using YourTrips.Application.DTOs.Route;
 
 namespace YourTrips.Core.Interfaces.Routes.Saved
 {

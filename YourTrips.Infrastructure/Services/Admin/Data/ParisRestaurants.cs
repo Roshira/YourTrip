@@ -5,12 +5,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail;
-using YourTrips.Core.DTOs.GoogleMaps;
 using Microsoft.Extensions.Configuration;
 using YourTrips.Application.Interfaces.GoogleMaps;
-using YourTrips.Core.DTOs.Admin.Data;
 using YourTrips.Core.Interfaces.Admin;
+using YourTrips.Application.DTOs.Admin.Data;
 
 namespace YourTrips.Infrastructure.Services.Admin.Data
 {

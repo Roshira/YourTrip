@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.RapidBooking;
+using YourTrips.Application.DTOs.RapidBooking;
 
 namespace YourTrips.Application.Interfaces.RapidBooking
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Admin.Data;
+using YourTrips.Application.DTOs.Admin.Data;
 using YourTrips.Core.Interfaces.Admin;
 
 namespace YourTrips.Infrastructure.Services.Admin.Data

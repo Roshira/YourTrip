@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Application.DTOs.RapidBooking.Describe;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.RapidBooking.Describe;
 
 namespace YourTrips.Infrastructure.Services.BookingService
 {

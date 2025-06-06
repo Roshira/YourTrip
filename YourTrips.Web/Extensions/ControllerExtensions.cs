@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using YourTrips.Core.DTOs;
+using YourTrips.Application.DTOs;
 
 namespace YourTrips.Web.Extensions
 {

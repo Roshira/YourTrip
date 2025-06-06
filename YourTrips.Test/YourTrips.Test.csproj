@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\YourTrips.Application\YourTrips.Application.csproj" />
     <ProjectReference Include="..\YourTrips.Core\YourTrips.Core.csproj" />
     <ProjectReference Include="..\YourTrips.Infrastructure\YourTrips.Infrastructure.csproj" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Admin.Data;
+using YourTrips.Application.DTOs.Admin.Data;
 
 namespace YourTrips.Core.Interfaces.Admin
 {

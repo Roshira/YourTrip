@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using YourTrips.Application.DTOs.GoogleMaps;
+using YourTrips.Application.DTOs.GoogleMaps.PlaceDetail;
 using YourTrips.Application.Interfaces.GoogleMaps;
-using YourTrips.Core.DTOs.GoogleMaps;
-using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail;
 
 namespace YourTrips.Infrastructure.Services.GoogleMapsServices
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using YourTrips.Core.DTOs.Route;
+using YourTrips.Application.DTOs.Route;
 using YourTrips.Core.Entities.Achievement;
 using YourTrips.Core.Interfaces.Achievements;
 using YourTrips.Core.Interfaces.Routes.Saved;

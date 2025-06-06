@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Achievenent;
+using YourTrips.Application.DTOs.Achievenent;
 
 namespace YourTrips.Core.Interfaces.Achievements
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Amadeus.Locations;
+using YourTrips.Application.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Application.Interfaces.Amadeus
 {

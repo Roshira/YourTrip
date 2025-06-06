@@ -84,5 +84,7 @@ namespace YourTrips.Web.Controllers.Admin
             var result = await _restaurantSorter.CompareSortingMethodsAsync();
             return Ok(result);
         }
+
+        
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using YourTrips.Core.DTOs.Route;
+using YourTrips.Application.DTOs.Route;
 using YourTrips.Core.Entities;
 
 namespace YourTrips.Infrastructure

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs;
+using YourTrips.Application.DTOs;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces;
 

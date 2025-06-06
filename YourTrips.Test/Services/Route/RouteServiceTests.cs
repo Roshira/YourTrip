@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using YourTrips.Application.DTOs.Route;
+using YourTrips.Application.DTOs.Route.PartRoutes;
 using YourTrips.Application.Interfaces.GoogleMaps;
-using YourTrips.Core.DTOs.Route;
-using YourTrips.Core.DTOs.Route.PartRoutes;
 using YourTrips.Infrastructure.Data;
 using YourTrips.Infrastructure.Services.Routes;
 
@@ -32,7 +32,11 @@ public class RouteServiceTests
 
         _service = new RouteService(_context, _mapper, googleServiceMock.Object);
     }
-
+    [TearDown]
+    public void TearDown()
+    {
+        _context.Dispose();
+    }
     [Test]
     public async Task CreateRouteAsync_Should_Create_Route_And_Return_Dto()
     {

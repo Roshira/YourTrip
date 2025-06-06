@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YourTrips.Application\YourTrips.Application.csproj" />
+  </ItemGroup>
+
 </Project>

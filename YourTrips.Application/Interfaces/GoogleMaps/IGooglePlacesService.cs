@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.GoogleMaps;
-using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail;
+using YourTrips.Application.DTOs.GoogleMaps;
+using YourTrips.Application.DTOs.GoogleMaps.PlaceDetail;
 
 namespace YourTrips.Application.Interfaces.GoogleMaps
 {

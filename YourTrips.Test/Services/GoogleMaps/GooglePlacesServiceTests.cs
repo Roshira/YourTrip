@@ -4,14 +4,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using YourTrips.Infrastructure.Services.GoogleMapsServices;
-using YourTrips.Core.DTOs.GoogleMaps;
-using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using System;
 using Moq.Protected;
-using YourTrips.Core.DTOs.GoogleMaps.PlaceDetail.ResponseClase;
+using YourTrips.Application.DTOs.GoogleMaps.PlaceDetail;
+using YourTrips.Application.DTOs.GoogleMaps.PlaceDetail.ResponseClase;
+using Microsoft.EntityFrameworkCore;
 
 namespace YourTrips.Infrastructure.Tests.Services
 {
@@ -34,7 +34,11 @@ namespace YourTrips.Infrastructure.Tests.Services
 
             _service = new GooglePlacesService(_httpClient, _configurationMock.Object);
         }
-
+        [TearDown]
+        public void TearDown()
+        {
+            _httpClient.Dispose();
+        }
         [Test]
         public async Task GetFullPlaceDetailsAsync_ReturnsPlaceDetails_WhenApiCallIsSuccessful()
         {

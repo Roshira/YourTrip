@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YourTrips.Application.Amadeus.Models.Flight;
-using YourTrips.Core.DTOs.Amadeus.Flight;
+using YourTrips.Application.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Application.Interfaces.Interfaces
 {

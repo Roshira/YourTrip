@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs;
-using YourTrips.Core.DTOs.Route;
 using YourTrips.Core.Interfaces;
 using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.RateLimiting;
-using YourTrips.Core.Interfaces.Achievements;
+using YourTrips.Application.DTOs;
+using YourTrips.Application.DTOs.Route;
 
 namespace YourTrips.Infrastructure.Services.RouteServices
 {

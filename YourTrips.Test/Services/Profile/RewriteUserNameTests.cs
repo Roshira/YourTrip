@@ -3,7 +3,6 @@ using NUnit.Framework;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using YourTrips.Core.DTOs;
 using YourTrips.Core.Entities;
 using YourTrips.Infrastructure.Services.ProfileServices;
 using System.Collections.Generic;

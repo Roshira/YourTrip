@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Route;
-using YourTrips.Core.DTOs;
-using YourTrips.Core.DTOs.Route.PartRoutes;
+using YourTrips.Application.DTOs.Route;
+using YourTrips.Application.DTOs.Route.PartRoutes;
+using YourTrips.Application.DTOs;
 
 namespace YourTrips.Core.Interfaces.Routes
 {

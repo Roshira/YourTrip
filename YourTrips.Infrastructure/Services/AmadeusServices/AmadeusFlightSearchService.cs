@@ -2,8 +2,8 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using YourTrips.Application.Amadeus.Models.Flight;
+using YourTrips.Application.DTOs.Amadeus.Flight;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.Amadeus.Flight;
 
 namespace YourTrips.Infrastructure.Services;
 

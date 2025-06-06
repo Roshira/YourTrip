@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using YourTrips.Application.DTOs.RapidBooking;
+using YourTrips.Application.DTOs.RapidBooking.Describe;
 using YourTrips.Application.Interfaces.Interfaces;
 using YourTrips.Application.Interfaces.RapidBooking;
-using YourTrips.Core.DTOs.RapidBooking.Describe;
-using YourTrips.Core.DTOs.RapidBooking;
 using YourTrips.Core.Entities;
 
 using YourTrips.Core.Interfaces.Routes.Saved;

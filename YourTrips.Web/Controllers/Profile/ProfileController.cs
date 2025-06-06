@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces;
 using YourTrips.Infrastructure.Data;

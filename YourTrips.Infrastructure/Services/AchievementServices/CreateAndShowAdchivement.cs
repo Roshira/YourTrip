@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YourTrips.Core.DTOs.Achievenent;
+using YourTrips.Application.DTOs.Achievenent;
 using YourTrips.Core.Entities.Achievement;
 using YourTrips.Core.Interfaces.Achievements;
 using YourTrips.Infrastructure.Data;

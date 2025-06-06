@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using YourTrips.Application.DTOs.RapidBooking;
 using YourTrips.Application.Interfaces.RapidBooking;
-using YourTrips.Core.DTOs.RapidBooking;
 
 /// <summary>
 /// Service for retrieving hotel and location suggestions from the Booking.com RapidAPI

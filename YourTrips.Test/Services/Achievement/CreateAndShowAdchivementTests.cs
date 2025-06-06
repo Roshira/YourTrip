@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Microsoft.EntityFrameworkCore;
-using YourTrips.Core.DTOs.Achievenent;
 using YourTrips.Core.Entities.Achievement;
 using YourTrips.Infrastructure.Data;
 using System;

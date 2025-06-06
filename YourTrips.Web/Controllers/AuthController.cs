@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using YourTrips.Core.DTOs.Auth;
+using YourTrips.Application.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces;
 
@@ -33,7 +32,11 @@ namespace YourTrips.Web.Controllers
         [AllowAnonymous] // Allows access without authentication
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
+
+
             var result = await _authService.RegisterAsync(registerDto);
+
+
             if (!result.IsSuccess)
             {
                 return BadRequest(result); // Returns 400 with error details
@@ -71,7 +74,7 @@ namespace YourTrips.Web.Controllers
             token = Uri.UnescapeDataString(token); // URL decode the token
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
-           
+
             if (!result.Succeeded)
             {
                 return BadRequest("Email confirmation failed. The link might be invalid or expired.");
@@ -95,7 +98,7 @@ namespace YourTrips.Web.Controllers
             }
 
             var user = await _userManager.FindByIdAsync(userId);
-           
+
             if (user == null)
             {
                 // Don't reveal whether user exists
@@ -135,7 +138,7 @@ namespace YourTrips.Web.Controllers
             {
                 user.Email,
                 user.UserName,
-                
+
             });
         }
     }

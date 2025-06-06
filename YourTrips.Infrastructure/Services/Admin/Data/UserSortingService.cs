@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using YourTrips.Core.DTOs.Admin.Data;
+using YourTrips.Application.DTOs.Admin.Data;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces.Admin;
 using YourTrips.Infrastructure.Data;
@@ -72,7 +72,7 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             return Task.FromResult(new SortingResult
             {
                 UserRoutes = userRoutes,
-                ExecutionTimeMs = stopwatch.ElapsedMilliseconds,
+                ExecutionTimeMs = stopwatch.Elapsed.TotalMilliseconds,
                 MethodName = "Sequential (MergeSort)"
             });
         }
@@ -97,11 +97,11 @@ namespace YourTrips.Infrastructure.Services.Admin.Data
             var sorted = await ParallelMergeSort(userRoutes);
 
             stopwatch.Stop();
-
+            var timeInMs = stopwatch.Elapsed.TotalMilliseconds;
             return new SortingResult
             {
                 UserRoutes = sorted,
-                ExecutionTimeMs = stopwatch.ElapsedMilliseconds,
+                ExecutionTimeMs = stopwatch.Elapsed.TotalMilliseconds,
                 MethodName = "Parallel (MergeSort)"
             };
         }

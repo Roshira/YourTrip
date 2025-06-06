@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Application.DTOs;
+using YourTrips.Application.DTOs.Route.Saved;
 using YourTrips.Application.Interfaces.RapidBooking;
-using YourTrips.Core.DTOs;
-using YourTrips.Core.DTOs.Route.Saved;
 using YourTrips.Core.Interfaces.Routes.Saved;
 using YourTrips.Infrastructure.Data;
 

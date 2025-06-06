@@ -6,11 +6,11 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using global::YourTrips.Core.DTOs.RapidBooking;
 using Microsoft.Extensions.Configuration;
 using MimeKit.Cryptography;
+using YourTrips.Application.DTOs.RapidBooking;
+using YourTrips.Application.DTOs.RapidBooking.AdditionalDTO;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.RapidBooking.AdditionalDTO;
 
 namespace YourTrips.Infrastructure.RapidBooking.Services
 { 

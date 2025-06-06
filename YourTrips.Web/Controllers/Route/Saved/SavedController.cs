@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using YourTrips.Application.DTOs.Route.Saved;
 using YourTrips.Application.Interfaces.Amadeus;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.Route.Saved;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Entities.Saved;
 using YourTrips.Core.Interfaces.Routes.Saved;

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YourTrips.Application.DTOs.Auth;
 using YourTrips.Application.Interfaces;
-using YourTrips.Core.DTOs.Auth;
 using YourTrips.Core.Entities;
 using YourTrips.Core.Interfaces;
 

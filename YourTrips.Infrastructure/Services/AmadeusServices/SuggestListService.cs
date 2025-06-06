@@ -6,9 +6,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using YourTrips.Application.Amadeus.Models;
+using YourTrips.Application.DTOs.Amadeus.Locations;
 using YourTrips.Application.Interfaces.Amadeus;
 using YourTrips.Application.Interfaces.Interfaces;
-using YourTrips.Core.DTOs.Amadeus.Locations;
 
 namespace YourTrips.Infrastructure.Services.Amadeus
 {
