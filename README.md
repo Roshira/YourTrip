@@ -17,10 +17,12 @@ sequential sorting of users with different sampling and also reading from the AP
 in Paris but with one selection due to the capabilities of the free API.
 
 Also in this project used Design Patterns:
+
 Generative Patterns:
 Factory Pattern (DesignTimeDbContextFactory):
 Encapsulates the logic of object creation.
 Example: YourTripsDbContextFactory is used by EF Core tools to create a DbContext instance at design time (e.g. for migrations).
+
 Structural Patterns:
 Facade Pattern: Provides a simplified interface to a complex subsystem.
 Example: UserManager, SignInManager with ASP.NET Core Identity simplify complex authentication and user management operations.
@@ -31,6 +33,7 @@ Example:
 Services that interact with external APIs
 (AmadeusFlightSearchService, BookingApiService, GooglePlacesService) act as adapters. They translate requests from your application
 into the format expected by the external service, and vice versa.
+
 Behavioral Patterns:
 Strategy Pattern: allows you to define a family of algorithms, encapsulate each of them, and make them interchangeable.
 Example: IUserSortingService and IRestaurantSorter with their implementations (UserSortingService, ParisRestaurantSorter).
@@ -41,6 +44,7 @@ Dependency Injection (DI) / Inversion of Control (IoC):
 Reduces coupling, makes it easier to test and replace components.
 Example: Almost everywhere. ServiceCollectionExtensions.cs (both in Web and Infrastructure) heavily uses services.AddScoped, services.AddHttpClient, etc. Controllers and services get dependencies through constructors.
 Structural Patterns:
+
 Options Pattern: The standard way to work with configuration in ASP.NET Core.
 Example: services.Configure<SmtpSettings>(config.GetSection("SmtpSettings")) and IOptions<SmtpSettings> injection.
 Mapper Pattern: Reduces the amount of routine code for copying data between objects in different layers.
