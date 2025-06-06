@@ -1,5 +1,6 @@
-rontend part of the project: https://github.com/yuliia-zinchenko/yourTrip
-
+Frontend part of the project: https://github.com/yuliia-zinchenko/yourTrip
+Documentation wiht Doxigen: https://roshira.github.io/YourTrip/
+Video demonstration backend part: loading...
 
 The frontend and backend are on different computers, so to fully run it, you need to run them simultaneously and it is recommended from the same network. Or you can do this using Swagger. Run from the .Web folder by writing the dotnet run in the console.
 Clean Architecture is used for easier support and adding new functionality and reducing program dependencies. Of the minuses, this solution increases the amount of code that needs to be written, especially at the beginning, the further the more justified.
