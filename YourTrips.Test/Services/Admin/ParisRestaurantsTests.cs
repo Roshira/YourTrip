@@ -15,9 +15,18 @@ using NUnit.Framework.Legacy;
 
 namespace YourTrips.Tests
 {
+    /// <summary>
+    /// Unit tests for the <see cref="ParisRestaurants"/> service responsible for retrieving restaurant data from Google Maps API.
+    /// </summary>
     [TestFixture]
     public class ParisRestaurantsTests
     {
+        /// <summary>
+        /// Creates an instance of <see cref="ParisRestaurants"/> with mocked HTTP responses and configuration.
+        /// </summary>
+        /// <param name="textSearchResponse">The HTTP response returned for the Places Text Search API call.</param>
+        /// <param name="detailsResponse">The HTTP response returned for the Place Details API call.</param>
+        /// <returns>An instance of <see cref="ParisRestaurants"/> configured with mocked dependencies.</returns>
         private ParisRestaurants CreateService(HttpResponseMessage textSearchResponse, HttpResponseMessage detailsResponse)
         {
             var handlerMock = new Mock<HttpMessageHandler>();
@@ -38,6 +47,10 @@ namespace YourTrips.Tests
             return new ParisRestaurants(httpClient, configMock.Object);
         }
 
+        /// <summary>
+        /// Verifies that <see cref="ParisRestaurants.GetParisRestaurantsAsync"/> returns the expected restaurant information
+        /// when valid mocked responses are provided.
+        /// </summary>
         [Test]
         public async Task GetParisRestaurantsAsync_ReturnsExpectedRestaurant()
         {
@@ -89,7 +102,9 @@ namespace YourTrips.Tests
 
             Assert.That(results, Is.Not.Null);
             Assert.That(results.Count, Is.EqualTo(1));
+
             var restaurant = results[0];
+
             Assert.That(restaurant.Id, Is.EqualTo("test-place-id"));
             Assert.That(restaurant.Name, Is.EqualTo("Test Restaurant"));
             Assert.That(restaurant.Address, Is.EqualTo("123 Test St"));

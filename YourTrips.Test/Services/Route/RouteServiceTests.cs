@@ -7,6 +7,9 @@ using YourTrips.Application.Interfaces.GoogleMaps;
 using YourTrips.Infrastructure.Data;
 using YourTrips.Infrastructure.Services.Routes;
 
+/// <summary>
+/// Route tests
+/// </summary>
 [TestFixture]
 public class RouteServiceTests
 {
