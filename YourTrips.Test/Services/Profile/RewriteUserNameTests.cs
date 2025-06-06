@@ -10,6 +10,9 @@ using System.Linq;
 
 namespace YourTrips.Tests.Services
 {
+    /// <summary>
+    /// Profile tests
+    /// </summary>
     [TestFixture]
     public class RewriteUserNameTests
     {
