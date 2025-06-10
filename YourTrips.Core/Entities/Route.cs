@@ -51,7 +51,7 @@ namespace YourTrips.Core.Entities
         /// URL of an image representing the route.
         /// Defaults to a placeholder image URL.
         /// </summary>
-        public string ImageUrl { get; set; } = "https://videos.openai.com/vg-assets/assets%2Ftask_01jwge5h8geyntwn83hfk36f35%2F1748603511_img_0.webp?st=2025-05-30T10%3A04%3A39Z&se=2025-06-05T11%3A04%3A39Z&sks=b&skt=2025-05-30T10%3A04%3A39Z&ske=2025-06-05T11%3A04%3A39Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=ZiLiyj4Zpihm0lvdXIG8nh%2FGgB%2FHjFhekxGsEU1YeuU%3D&az=oaivgprodscus";
+        public string ImageUrl { get; set; } = "https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1";
 
         /// <summary>
         /// The UTC date and time when the route was created.

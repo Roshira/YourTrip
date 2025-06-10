@@ -32,6 +32,7 @@ using YourTrips.Infrastructure.Services.RouteServices;
 using YourTrips.Core.Interfaces.Achievements;
 using YourTrips.Core.Interfaces.Admin;
 using YourTrips.Infrastructure.Services.Admin.Data;
+using YourTrips.Application.Interfaces.GoogleAI;
 
 namespace YourTrips.Infrastructure
 {
@@ -90,6 +91,7 @@ namespace YourTrips.Infrastructure
             });
 
             // Register scoped services for application business logic
+            services.AddHttpClient<IGoogleAiService, GoogleAiService>();
             services.AddScoped<IRestaurantSorter, ParisRestaurantSorter>();
             services.AddScoped<IParisRestaurants, ParisRestaurants>();
             services.AddScoped<IUserSortingService, UserSortingService>();
