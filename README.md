@@ -2,6 +2,8 @@
 Документація з Doxigen: https://roshira.github.io/YourTrip/
 Відеодемонстрація бекенду: https://youtu.be/tYpOGI63Deg
 
+Підєднано Google AI studio, щоб користувачі могли легко з допомогою помічника задавати питання на рахунок подорожей, а також генерувати самі подорожі.
+
 Технологічний стек бекенду:
 ASP.NET Core, Rest Api
 PostgreSql, Entity Framework, Identity Framework
