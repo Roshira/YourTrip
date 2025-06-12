@@ -1,6 +1,6 @@
 Фронтенд-частина проєкту: https://github.com/yuliia-zinchenko/yourTrip
 Документація з Doxigen: https://roshira.github.io/YourTrip/
-Відеодемонстрація бекенду: ...
+Відеодемонстрація бекенду: https://youtu.be/tYpOGI63Deg
 
 Технологічний стек бекенду:
 ASP.NET Core, Rest Api
